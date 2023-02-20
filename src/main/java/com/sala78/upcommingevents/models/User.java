@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Entity @Table(name = "users")
 public class User {
 
-    // @ManyToMany
-    // private List<User> roles;
+    @ManyToMany
+    private List<User> roles;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_user")
     private Long id_user;
