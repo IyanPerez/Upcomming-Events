@@ -1,8 +1,8 @@
 <script setup>
-
+import LoginComponent from '@/components/login/LoginComponent.vue';
 </script>
 
 <template>
-    <h1>Somos el grupo de tercero b y venimos a hablar de la celula</h1>
+    <LoginComponent/>
 </template>
 
