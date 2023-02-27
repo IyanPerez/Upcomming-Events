@@ -4,7 +4,7 @@ import router from './router'
 
 
 // Composables
-
+import '../src/assets/scss/_main.scss'
 
 // Plugins
 import { registerPlugins } from '@/plugins'

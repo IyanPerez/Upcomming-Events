@@ -15,17 +15,17 @@ const router = createRouter({
       component: () => import("../views/DashboardView.vue"),
       children: [
         {
-          path: "/create",
+          path: "create",
           name: "create",
           component: () => import("../views/CreateView.vue"),
         },
         {
-          path: "/details",
+          path: "details",
           name: "details",
           component: () => import("../views/DetailsView.vue"),
         },
         {
-          path: "/myevent",
+          path: "myevent",
           name: "myevent",
           component: () => import("../views/MyEventView.vue"),
     
