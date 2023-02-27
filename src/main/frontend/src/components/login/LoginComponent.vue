@@ -2,10 +2,6 @@
 
 <template>
 
- <main>
-     
-    <img src="../../assets/img/Login background.png" alt="background-image-Events">
-    
     <div class="login-container">
       <img
         class="login-container__img"
@@ -28,32 +24,22 @@
       </div>
     </div>
 
-</main>
-
 </template>
 
 <style scoped lang="scss">
-
-main{
-  margin: 1em ;
-//   background-image: url(../../assets/img/Login\ background.png);
-//   background-position: 100%;
-//   background-size: center/100%;
-
-}
-
 
 img{
     width: 100%;
     display: flex;
 }
 .login-container {
-  width: 100%;
-  height: 50%;
+  width: 40%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  background-color: white;
+  overflow: hidden;
 
   &__img {
     width: 10em;
@@ -68,11 +54,13 @@ img{
     border-radius: 5em;
     color:black;
  
-    &__button{
+   
+    }
+     &__button{
     width: 25em;
+    margin-bottom: 2.5em;
        
       }
-    }
   }
 
 </style>
