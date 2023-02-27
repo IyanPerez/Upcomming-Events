@@ -56,11 +56,11 @@ img{
  
    
     }
-     &__button{
+  &__button{
     width: 25em;
     margin-bottom: 2.5em;
        
-      }
+    }
   }
 
 </style>
