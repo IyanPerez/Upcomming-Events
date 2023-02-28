@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity @Table(name = "users")
 public class User {
 
-    @ManyToMany
-    private List<User> roles;
+   
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_user")
     private Long id_user;
@@ -57,6 +57,9 @@ public class User {
         this.password = password;
     }
 
+    @ManyToMany
+    @JoinColumn(name="id_role", nullable = true)
+    private List<User> roles;
     
     
 }
