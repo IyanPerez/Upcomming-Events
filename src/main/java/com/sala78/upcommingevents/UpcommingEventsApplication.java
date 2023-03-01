@@ -23,14 +23,10 @@ public class UpcommingEventsApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(UserRepository users,RolesRepository roles, PasswordEncoder encoder) {
 		return args -> {
-			Role theRole = new Role(null, "ROLE_USER");
-			
 
-			roles.save(theRole);
-			User userToAdd = new User(null, "user",encoder.encode("password"));
-			userToAdd.setRoles(theRole);
-			users.save(userToAdd);
-			users.save(new User(null, "admin",encoder.encode("password")));
+			
+			users.save(new User(null, "user",encoder.encode("password"),"ROLE_USER"));
+			users.save(new User(null, "admin",encoder.encode("password"),"ROLE_ADMIN"));
 
 		};
 	}

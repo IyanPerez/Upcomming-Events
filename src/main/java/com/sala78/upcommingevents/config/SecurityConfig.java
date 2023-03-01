@@ -28,12 +28,11 @@ public class SecurityConfig {
     @Autowired
     private MyAuthenticationEntryPoint authenticationEntryPoint;
 
-    private  JpaUserDetailsService jpaUserDetailsService;
+    private JpaUserDetailsService service;
 
-    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService){
-        this.jpaUserDetailsService = jpaUserDetailsService;
+    public SecurityConfig(JpaUserDetailsService service) {
+        this.service = service;
     }
-
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -46,22 +45,19 @@ public class SecurityConfig {
             .logout(logout -> logout
                               .logoutUrl("/api/logout")
                               .deleteCookies("JSESSIONID"))
-                              .authorizeRequests((auth) -> auth
-                                                .antMatchers("/api/login").permitAll()
-                                                .antMatchers("/api/events").hasRole("USER")
-                                                .antMatchers("/api/user").hasRole("USER")
-                                                .antMatchers("/api/admin").hasRole("ADMIN")
-                                                .anyRequest()
-                                                .authenticated())
-                                                .userDetailsService(jpaUserDetailsService)
-                                                .sessionManagement(session -> session
+            .authorizeRequests(auth -> auth
+                                        .antMatchers("/api/login").hasAnyRole("USER", "ADMIN")
+                                        .antMatchers("/api/events").permitAll()
+                                        .anyRequest()
+                                        .authenticated())
+                                        .userDetailsService(service)
+                                        .sessionManagement(session -> session
                                                             .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                                                .httpBasic(basic -> basic
-                                                            .authenticationEntryPoint(authenticationEntryPoint))
-                                                .httpBasic(Customizer.withDefaults());
+                                        .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint))
+                                        .httpBasic(Customizer.withDefaults());
                                                 
 
-                                                return http.build();
+        return http.build();
                                                 
             
     

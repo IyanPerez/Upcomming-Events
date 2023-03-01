@@ -1,6 +1,7 @@
 package com.sala78.upcommingevents.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -16,29 +17,28 @@ public class SecurityUser implements UserDetails{
         this.user = user;
     }
 
+    public void setPassword(String password) {
+        this.user.setPassword(password);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         
-        Collection<String> roles = new ArrayList<>();
-
-        for (Role role : user.getRoles()) {
-           roles.add(role.getRole());
-           System.out.println(role.getRole());
-        }
-
-        
-        return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return Arrays.stream(user
+                            .getRoles()
+                            .split(","))
+                            .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
                     
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return this.user.getUsername();
     }
 
     @Override

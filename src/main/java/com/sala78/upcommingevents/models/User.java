@@ -26,17 +26,23 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany
-    @JoinColumn(name = "id_user")
-    private List<Role> roles;
+    private String roles;
 
     public User() {}
 
-    public User(Long id_user, String username, String password) {
+    public User(Long id_user, String username, String password,String roles) {
         this.id_user = id_user;
         this.username = username;
         this.password = password;
-        this.roles = new ArrayList<>();
+        this.roles = roles;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     public Long getId_user() {
@@ -63,15 +69,6 @@ public class User {
         this.password = password;
     }
 
-    
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Role roles) {
-        this.roles.add(roles);
-    }
     
     
 }
