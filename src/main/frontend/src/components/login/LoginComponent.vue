@@ -1,11 +1,17 @@
 <script setup>
+import { ref, computed } from 'vue';
+import {useLoginStore} from '../../stores/loginStore'
+
+const useloginstore=useLoginStore()
 const props = defineProps({
   title:{
   type: String,
   default: 'login'
 }})
+const username = ref("")
+const password = ref("")
 
-
+useloginstore.saveLogin()
 </script>
 
 <template>
@@ -23,11 +29,13 @@ const props = defineProps({
         <v-text-field
           label="User Name"
           :rules="UserNameRules"
+          v-model="username"
           required
         ></v-text-field>
         <v-text-field
           label="Password"
           :rules="PasswordRules"
+          v-model="password"
           required
         ></v-text-field>
         <v-snackbar v-model="snackbar">
