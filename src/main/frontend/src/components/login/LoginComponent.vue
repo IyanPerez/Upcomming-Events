@@ -11,7 +11,11 @@ const props = defineProps({
 const username = ref("")
 const password = ref("")
 
-useloginstore.saveLogin()
+
+const submit = () => {
+  useloginstore.saveLogin(username.value, password.value)
+
+}
 </script>
 
 <template>
@@ -27,29 +31,20 @@ useloginstore.saveLogin()
       </div>
       <div class="login-container__inputs">
         <v-text-field
-          label="User Name"
-          :rules="UserNameRules"
+          label="'User Name'"
+          
           v-model="username"
           required
         ></v-text-field>
         <v-text-field
-          label="Password"
-          :rules="PasswordRules"
+          label="'Password'"
           v-model="password"
           required
         ></v-text-field>
-        <v-snackbar v-model="snackbar">
-          {{ textSnackbar }}
-
-          <template v-slot:action="{ attrs }">
-            <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-                Close
-            </v-btn>
-          </template>
-        </v-snackbar>
+      
       </div>
       <div class="login-container__button">
-        <v-btn color="yellow" width="28em" @click="login">Login to the account</v-btn>
+        <v-btn color="yellow" width="28em" @click="submit()">Login to the account</v-btn>
       </div>
     </div>
 
