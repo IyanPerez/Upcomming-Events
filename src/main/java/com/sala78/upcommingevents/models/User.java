@@ -1,5 +1,6 @@
 package com.sala78.upcommingevents.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,6 +32,7 @@ public class User {
         this.id_user = id_user;
         this.username = username;
         this.password = password;
+        this.roles = new ArrayList<>();
     }
 
     public Long getId_user() {
@@ -60,6 +62,14 @@ public class User {
     @ManyToMany
     @JoinColumn(name="id_role", nullable = true)
     private List<User> roles;
+
+    public List<User> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<User> roles) {
+        this.roles = roles;
+    }
     
     
 }
