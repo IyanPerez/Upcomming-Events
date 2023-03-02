@@ -13,13 +13,14 @@ const password = ref("")
 
 
 const submit = () => {
+  let errorParagraphUser = document.getElementById('login-container__inputs__UserMsg');
   username.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
-  if(username.value.length < 8){
-    alert("Username must be more than 8 characters")
-  }
 
-
+    // alert("Username must be more than 8 characters")
+  username.value.length < 8 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
+  
+  
 };
 
 
@@ -31,7 +32,7 @@ const submit = () => {
     <div class="login-container">
       <img
         class="login-container__img"
-        src="../../assets/img/box.png"
+        src="../../assets/img/people.png"
         alt="icon-person"
       />
       <div class="login-container__title">
@@ -42,8 +43,9 @@ const submit = () => {
           label="'User Name'"
           v-model="username"
           required
+          hide-details="auto"
         ></v-text-field>
-        <p id="UserMsg">Username must be more than 8 characters</p>
+          <p id="login-container__inputs__UserMsg"></p>
         <v-text-field
           label="'Password'"
           v-model="password"
@@ -74,7 +76,7 @@ img{
   overflow: hidden;
 
   &__img {
-    width: 10em;
+    width: 5em;
     margin-bottom: 2em;
   }
   &__title {
@@ -85,14 +87,20 @@ img{
     margin-bottom: 5em;
     border-radius: 5em;
     color:black;
- 
-   
-    }
+    
+    
+  }
   &__button{
     width: 25em;
     margin-bottom: 2.5em;
-       
-    }
+    
   }
+  
+}
+#login-container__inputs__UserMsg{
+    margin-bottom: 100px;
+      color: red;
+    }
+    
 
 </style>

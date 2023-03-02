@@ -12,8 +12,10 @@ import LoginComponent from '@/components/login/LoginComponent.vue';
 
 <style lang="scss" scoped>
     main{
-        background-color: burlywood;
+        background-image: url("../assets/img/Login-background.png");
         width: 100%;
+        background-position: 100%;
+        background-size: center/100%;
         height: 100vh;
         display: flex;
         flex-direction: row;
