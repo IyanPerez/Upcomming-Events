@@ -13,9 +13,17 @@ const password = ref("")
 
 
 const submit = () => {
-  useloginstore.saveLogin(username.value, password.value)
+  username.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
-}
+  if(username.value.length < 8){
+    alert("Username must be more than 8 characters")
+  }
+
+
+};
+
+
+
 </script>
 
 <template>
@@ -32,10 +40,10 @@ const submit = () => {
       <div class="login-container__inputs">
         <v-text-field
           label="'User Name'"
-          
           v-model="username"
           required
         ></v-text-field>
+        <p id="UserMsg">Username must be more than 8 characters</p>
         <v-text-field
           label="'Password'"
           v-model="password"
