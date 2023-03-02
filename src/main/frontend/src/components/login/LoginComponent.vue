@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue';
 import {useLoginStore} from '../../stores/loginStore'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const useloginstore=useLoginStore()
 const props = defineProps({
   title:{
@@ -12,15 +14,23 @@ const username = ref("")
 const password = ref("")
 
 
-const submit = () => {
+const submit = async () => {
   let errorParagraphUser = document.getElementById('login-container__inputs__UserMsg');
-  username.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
+  username.value.length > 3 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
+  
 
     // alert("Username must be more than 8 characters")
-  username.value.length < 8 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
+  username.value.length < 4 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
+
+  let test = await useloginstore.loginSession(username.value, password.value);
   
+  if(test[0]==202)router.push({name:'userDetails'});
+  console.log(test);/* 
+  console.log(useloginstore.roleLogin); */
+
   
+
 };
 
 
