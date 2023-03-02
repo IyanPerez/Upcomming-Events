@@ -20,20 +20,23 @@ public class UpcommingEventsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UpcommingEventsApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner commandLineRunner(UserRepository users,RolesRepository roles, PasswordEncoder encoder) {
-		return args -> {
-			Role theRole = new Role(null, "ROLE_USER");
+
+	// @Bean
+	// CommandLineRunner commandLineRunner(UserRepository users,RolesRepository roleRepo, PasswordEncoder encoder) {
+	// 	return args -> {
+	// 		Role theRole = new Role(null, "ROLE_USER");
+
+	// 		List<Role> roles = new ArrayList<Role>();
+	// 		roles.add(theRole);
 			
+	// 		User userToAdd = new User(null, "user",encoder.encode("password"));
+	// 		userToAdd.setRoles(roles);
 
-			roles.save(theRole);
-			User userToAdd = new User(null, "user",encoder.encode("password"));
-			userToAdd.setRoles(theRole);
-			System.out.println("-------------------------------------------------------------------");
-			System.out.println(userToAdd.getRoles().get(0).getRole());
-			users.save(userToAdd);
-			/* users.save(new User(null, "admin",encoder.encode("password"))); */
+	// 		roleRepo.save(theRole);
+	// 		users.save(userToAdd);
 
-		};
-	}
+	// 		/* users.save(new User(null, "admin",encoder.encode("password"))); */
+
+	// 	};
+	// }
 }
