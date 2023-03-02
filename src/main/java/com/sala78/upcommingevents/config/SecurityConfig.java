@@ -28,12 +28,12 @@ public class SecurityConfig {
     @Autowired
     private MyAuthenticationEntryPoint authenticationEntryPoint;
 
-    private  JpaUserDetailsService jpaUserDetailsService;
+    private JpaUserDetailsService service;
 
-    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService){
-        this.jpaUserDetailsService = jpaUserDetailsService;
+    
+    public SecurityConfig(JpaUserDetailsService service) {
+        this.service = service;
     }
-
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -53,7 +53,7 @@ public class SecurityConfig {
                                                 .antMatchers("/api/admin").hasRole("ADMIN")
                                                 .anyRequest()
                                                 .authenticated())
-                                                .userDetailsService(jpaUserDetailsService)
+                                                .userDetailsService(service)
                                                 .sessionManagement(session -> session
                                                             .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                                                 .httpBasic(basic -> basic

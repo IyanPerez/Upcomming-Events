@@ -29,8 +29,10 @@ public class UpcommingEventsApplication {
 			roles.save(theRole);
 			User userToAdd = new User(null, "user",encoder.encode("password"));
 			userToAdd.setRoles(theRole);
+			System.out.println("-------------------------------------------------------------------");
+			System.out.println(userToAdd.getRoles().get(0).getRole());
 			users.save(userToAdd);
-			users.save(new User(null, "admin",encoder.encode("password")));
+			/* users.save(new User(null, "admin",encoder.encode("password"))); */
 
 		};
 	}
