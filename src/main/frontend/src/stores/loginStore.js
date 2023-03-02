@@ -9,7 +9,7 @@ export const useLoginStore = defineStore('login', {
     actions: {
         saveLogin(username, password){
             this.login={username:username, password:password}
-            console.log(this.login);            
+            console.log(this.login);
         },
     },
 });
