@@ -1,28 +1,34 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import {useLoginStore} from '../../stores/loginStore'
 
 const useloginstore=useLoginStore()
+
 const props = defineProps({
   title:{
   type: String,
   default: 'login'
-}})
+  }
+})
+
+
 const username = ref("")
 const password = ref("")
 
-
 const submit = () => {
-  let errorParagraphUser = document.getElementById('login-container__inputs__UserMsg');
-  username.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
+  username.value.length && password.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
-    // alert("Username must be more than 8 characters")
-  username.value.length < 8 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
-  
-  
+  username.value.length || password.value.length < 8 ? alert("Fields must contain at least 8 characters"):null;
 };
 
+function required (value) {
+  return !!value || 'This field is required'
+}
+
+function counter(value) {
+  return value.length < 20 || 'Max 20 characters'
+}
 
 
 </script>
@@ -30,31 +36,57 @@ const submit = () => {
 <template>
 
     <div class="login-container">
+
       <img
         class="login-container__img"
         src="../../assets/img/people.png"
         alt="icon-person"
       />
+
       <div class="login-container__title">
         <h1>{{ props.title }}</h1>
       </div>
+
       <div class="login-container__inputs">
-        <v-text-field
+
+        <v-text-field class="login-container__inputs__textField"
           label="'User Name'"
           v-model="username"
+          maxlength="20"
+          :rules="[required, counter]"
+          color="rgb(54, 127, 190)"
           required
-          hide-details="auto"
+          clearable
+          counter
         ></v-text-field>
-          <p id="login-container__inputs__UserMsg"></p>
-        <v-text-field
+
+        <v-text-field class="login-container__inputs__textField"
           label="'Password'"
           v-model="password"
+          type="password"
+          maxlength="20"
+          :rules="[required, counter]"
+          color="rgb(54, 127, 190)"
           required
+          clearable
+          counter
         ></v-text-field>
-      
+          
       </div>
+      
       <div class="login-container__button">
-        <v-btn color="yellow" width="28em" @click="submit()">Login to the account</v-btn>
+        
+        <v-btn 
+          color="#F5BD02" 
+          width="28em" 
+          variant="elevated"
+          type="submit"
+          @click="submit()">
+          
+            Login to the account
+
+        </v-btn>
+
       </div>
     </div>
 
@@ -67,40 +99,33 @@ img{
     display: flex;
 }
 .login-container {
-  width: 40%;
-  height: auto;
+  padding: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
   overflow: hidden;
-
-  &__img {
-    width: 5em;
-    margin-bottom: 2em;
-  }
-  &__title {
-    margin-bottom: 2em;
-  }
-  &__inputs {
-    width: 25em;
-    margin-bottom: 5em;
-    border-radius: 5em;
-    color:black;
-    
-    
-  }
-  &__button{
-    width: 25em;
-    margin-bottom: 2.5em;
-    
-  }
+  border-radius: 5%;
+  row-gap: 5%;
   
-}
-#login-container__inputs__UserMsg{
-    margin-bottom: 100px;
-      color: red;
+  &__img {
+    width: 6em;
+  }
+
+  &__inputs {
+    width: 90%;
+    color:black;
+
+    &__textField{
+    margin-block: 6%
+    
     }
+  }
+
+  &__button{
+    width: 80%;
+  }
+}
     
 
 </style>
