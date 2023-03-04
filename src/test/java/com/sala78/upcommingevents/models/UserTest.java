@@ -3,8 +3,8 @@ package com.sala78.upcommingevents.models;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -39,11 +39,12 @@ public class UserTest {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         String password = encoder.encode("12345");
 
-        User user = new User(null, "user", "12345");
+
         Role role = new Role(null, "ROLE_USER");
-        List<Role> roles = new ArrayList<Role>();
+        Set<Role> roles = new HashSet<>();
         roles.add(role);
-        user.setRoles(roles);
+        User user = new User(null, "user", "12345", roles);
+        
         user.setPassword(password);
 
         rolesRepository.save(role);
@@ -53,7 +54,7 @@ public class UserTest {
 
         assertThat("User", userDB.getId_user(), equalTo(1L));
         assertThat("User role", userDB.getRoles().size(), equalTo(1));
-        assertThat("User role name", userDB.getRoles().get(0).getRole(), equalTo("ROLE_USER"));
+        assertThat("User role name", userDB.getRoles().contains(role));
 
     }
 

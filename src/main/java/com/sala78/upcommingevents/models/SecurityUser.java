@@ -2,7 +2,8 @@ package com.sala78.upcommingevents.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,32 +22,13 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        /*
-         * System.out.println("holaaaaaa");
-         * Collection<String> roles = new ArrayList<>();
-         * System.out.println("aqui voy");
-         * System.out.println(this.user.getUsername()+"123");
-         * 
-         * 
-         * for (Role role : this.user.getRoles()) {
-         * System.out.println("sigo por aqui");
-         * roles.add(role.getRole());
-         * System.out.println(role.getRole());
-         * }
-         * 
-         * System.out.println("aaaaaa");
-         * 
-         * return
-         * roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-         */
-        List<Role> roles = user.getRoles();
+        Set<Role> roles = user.getRoles();
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        System.out.println("paso?");
+        
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
-
+        
         return authorities;
 
     }
