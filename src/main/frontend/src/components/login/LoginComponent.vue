@@ -21,7 +21,7 @@ const submit = async () => {
   
 
     // alert("Username must be more than 8 characters")
-  username.value.length < 4 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
+  username.value.length < 4 ? errorParagraphUser.innerHTML = "User name must be more than 4 characters" : "" ;
 
   let test = await useloginstore.loginSession(username.value, password.value);
   
