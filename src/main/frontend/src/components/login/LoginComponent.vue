@@ -18,23 +18,14 @@ const username = ref("")
 const password = ref("")
 
 const submit = async () => {
-  let errorParagraphUser = document.getElementById('login-container__inputs__UserMsg');
-  username.value.length > 3 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
-  
+  username.value.length && password.value.length > 4 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
 
-    // alert("Username must be more than 8 characters")
-  username.value.length < 4 ? errorParagraphUser.innerHTML = "User name must be more than 8 characters" : "" ;
+  username.value.length || password.value.length < 8 ? alert("Fields must contain at least 8 characters"):null;
 
   let test = await useloginstore.loginSession(username.value, password.value);
   
-  if(test[0]==202)router.push({name:'userDetails'});
-  console.log(test);/* 
-  console.log(useloginstore.roleLogin); */
-
-  username.value.length && password.value.length > 8 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
-
-  username.value.length || password.value.length < 8 ? alert("Fields must contain at least 8 characters"):null;
+  if(test[0]==202)router.push({name:'userDetails', path:'/details'});
 
 };
 
