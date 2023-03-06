@@ -16,7 +16,7 @@ public class AuthController {
 
     @GetMapping(value = "/login")
     public ResponseEntity<Map<String,String>> access(){
-         var auth = SecurityContextHolder.getContext().getAuthentication();
+        var auth = SecurityContextHolder.getContext().getAuthentication();
 
         Map<String, String> json = new HashMap<>();
         json.put("message","Logged");
