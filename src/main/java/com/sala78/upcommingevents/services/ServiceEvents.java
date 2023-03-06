@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sala78.upcommingevents.models.Event;
-import com.sala78.upcommingevents.models.User;
+
 import com.sala78.upcommingevents.repositories.EventRepository;
-import com.sala78.upcommingevents.repositories.UserRepository;
+
 
 @Service
 public class ServiceEvents {
@@ -20,5 +20,12 @@ public class ServiceEvents {
 
     public List<Event> listAll() {
         return repository.findAll();
+    }
+    public Event findById (long id_event) {
+        return repository.findById(id_event).orElse(null);
+    }
+    public Event save(Event event) {
+     Event eventSaved = repository.save(event);
+        return eventSaved;
     }
 }
