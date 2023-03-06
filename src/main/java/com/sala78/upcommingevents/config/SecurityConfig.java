@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.sala78.upcommingevents.services.JpaUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -25,7 +27,7 @@ public class SecurityConfig {
     // Add
     private  JpaUserDetailsService jpaUserDetailsService;
 
-    public SecurityConfiguration(JpaUserDetailsService jpaUserDetailsService){
+    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService){
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
 
