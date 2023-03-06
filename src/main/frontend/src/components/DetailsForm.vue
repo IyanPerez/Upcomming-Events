@@ -47,7 +47,7 @@ input {
     width: 80vw;
 }
 textarea {
-    background-color: #D1D1D1
+    background-color: #D1D1D1;
     border-radius: 10px;
     width: 80vw;
 
