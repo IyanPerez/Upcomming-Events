@@ -1,7 +1,6 @@
 package com.sala78.upcommingevents.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 
