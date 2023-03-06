@@ -18,12 +18,12 @@ public class UserService {
         this.repository = repository;
     }
 
-    public void store(User user) {
+    public User store(User user) {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         String encodePassword = encoder.encode(user.getPassword());
 
         user.setPassword(encodePassword);
-        repository.save(user);
+        return repository.save(user);
     }
 
     public List<User> listAll() {
