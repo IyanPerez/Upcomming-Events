@@ -27,38 +27,64 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-                .cors()
-                .and()
-                .headers(header -> header.frameOptions().sameOrigin())
-                .csrf(csrf -> csrf.disable())
-                .formLogin(form -> form.disable())
-                .logout(logout -> logout
-                        .logoutUrl("/api/logout")
-                        .deleteCookies("JSESSIONID"))
-                .authorizeRequests((auth) -> auth
-                        .antMatchers("/api/register").permitAll()
-                        .antMatchers("/api/login").hasAnyRole("ADMIN","USER")
-                        .antMatchers("/api/events").hasAnyRole("ADMIN","USER")
-                        .antMatchers("/api/user").hasRole("USER")
-                        .antMatchers("/api/admin").hasRole("ADMIN")
-                        .anyRequest()
-                        .authenticated())
-                .userDetailsService(service)
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                .httpBasic(basic -> basic
-                        .authenticationEntryPoint(authenticationEntryPoint))
-                .httpBasic(Customizer.withDefaults());
+            .cors()
+            .and()
+            .headers(header -> header.frameOptions().sameOrigin())
+            .csrf(csrf -> csrf.disable())
+            .formLogin(form -> form.disable())
+            .logout(logout -> logout
+                              .logoutUrl("/api/logout")
+                              .deleteCookies("JSESSIONID"))
+            .authorizeRequests(auth -> auth
+                                        .antMatchers("/api/login").hasAnyRole("USER", "ADMIN")
+                                        .antMatchers("/api/events").permitAll()
+                                        .anyRequest()
+                                        .authenticated())
+                                        .userDetailsService(service)
+                                        .sessionManagement(session -> session
+                                                            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                                        .httpBasic(basic -> basic.authenticationEntryPoint(authenticationEntryPoint))
+                                        .httpBasic(Customizer.withDefaults());
+                                                
 
         return http.build();
-
+                                                
+            
+    
     }
+
+    /* @Bean
+    public  InMemoryUserDetailsManager userDetailsService(){
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        String password = encoder.encode("1234");
+        System.out.println(password);
+
+        UserDetails admin = User.withUsername("admin")
+                            .password(password)
+                            .roles("ADMIN")
+                            .build();
+
+
+       UserDetails user = User.withUsername("user")
+                          .password(password)
+                          .roles("USER")
+                          .build();
+                          
+                          
+         Collection<UserDetails> users = new ArrayList<>();
+         users.add(admin);
+         users.add(user);    
+         
+         return new  InMemoryUserDetailsManager(users);
+    } */
 
     @Bean
-    PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
+   
 
 }
