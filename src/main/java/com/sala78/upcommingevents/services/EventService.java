@@ -8,24 +8,27 @@ import com.sala78.upcommingevents.models.Event;
 
 import com.sala78.upcommingevents.repositories.EventRepository;
 
+import com.sala78.upcommingevents.repositories.EventRepository;
 
 @Service
-public class ServiceEvents {
+public class EventService {
 
     private EventRepository repository;
 
-    public ServiceEvents(EventRepository repository) {
+    public EventService(EventRepository repository) {
         this.repository = repository;
     }
 
     public List<Event> listAll() {
         return repository.findAll();
     }
-    public Event findById (long id_event) {
+
+    public Event findById(long id_event) {
         return repository.findById(id_event).orElse(null);
     }
+
     public Event save(Event event) {
-     Event eventSaved = repository.save(event);
+        Event eventSaved = repository.save(event);
         return eventSaved;
     }
 }

@@ -21,11 +21,12 @@ const showInfo = computed(()=>{
     
 </template>
 
-<style>
-*{
-    background-color: #9e9898;
+
+
 <style lang="scss" scoped>
+
 .show{
+    background-color:#ECE5E5;
     visibility: visible;
 }
 .hidden{
