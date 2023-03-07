@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useLoginStore } from '../stores/loginStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,9 +13,14 @@ const router = createRouter({
     {
       path: '/details',
       name: 'userDetails',
-      component: () => import("../views/UserDetails.vue")
-    },
+      component: () => import("../views/UserDetails.vue"),
+      meta: {requiresAuth: true}
+    }
   ]
 })
+router.beforeEach((to, from) => {
+  const store = useLoginStore();
 
+  if(to.meta.requiresAuth && store.roleLogin == '') return {name: 'home'}
+})
 export default router
