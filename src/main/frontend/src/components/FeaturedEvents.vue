@@ -4,31 +4,23 @@ import { ref,onBeforeMount } from "vue";
 const featureEvents = defineProps({
   title: {
     type: String,
+    default: 'evento prueba'
+
   },
 
   img: {
     type: String,
+    default: '../../src/assets/img/Login-background.png'
   },
 });
 
-// let feventsDetails = ref ({});
-// let feventsTitle = ref();
-// let feventsImg = ref ();
 
-// onBeforeMount(async() => {
-//       const resp = await fetch (featureEvents.title)
-//       const data = await resp.json()
-//       feventsTitle.value = feventsDetails
-
-
-    
-// }),
 </script>
 <template>
   <div class="card">
     <h1 class="card__title">{{ title }}</h1>
     <picture class="card__img">
-      <img :src="img" salt="title-img" />
+      <img :src="img" alt="title-img" />
 
       hola 
     </picture>
