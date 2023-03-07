@@ -13,6 +13,6 @@ import DetailsForm from '../components/DetailsForm.vue';
 
 <style>
 *{
-    background-color: #9e9898;
+    background-color:#ECE5E5;
 }
 </style>
