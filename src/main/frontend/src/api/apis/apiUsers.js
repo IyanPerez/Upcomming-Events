@@ -9,11 +9,12 @@ export default class apiUsers{
     }
 
     async acces(username, password){
-        const response = axios.get(this.baseUrl + '/login', 
-                        {auth:{
-                            username: username,
-                            password: password
-                        }})
+        const response = axios.get(this.baseUrl + "/login", {
+          auth: {
+            username: username,
+            password: password,
+          }
+        });
         const getBody = (await response);
 
         return getBody

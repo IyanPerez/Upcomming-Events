@@ -9,7 +9,8 @@ export const useLoginStore = defineStore('login', {
     state: () => ({
         login: {},
         statusLogin: 0,
-        roleLogin: ''
+        roleLogin: '',
+        isAuthenticate: false
     }),
 
     actions: {
@@ -28,6 +29,9 @@ export const useLoginStore = defineStore('login', {
 
             this.statusLogin = response.status
             this.roleLogin = response.data.role
+            
+            if(response.status == 202) this.isAuthenticate = true;
+
 
             return response;
         },
