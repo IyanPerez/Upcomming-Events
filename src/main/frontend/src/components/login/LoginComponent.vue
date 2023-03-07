@@ -25,9 +25,13 @@ const submit = async () => {
 
   let test = await useloginstore.loginSession(username.value, password.value);
   
-  if(test[0]==202)router.push({name:'userDetails', path:'/details'});
+  if(test.status==202)router.push({name:'userDetails', path:'/details'});
 
 };
+
+const register = async()=>{
+  let test = await useloginstore.register();
+}
 
 function required (value) {
   return !!value || 'This field is required'

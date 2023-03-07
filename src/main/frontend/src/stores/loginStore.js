@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { defineStore } from 'pinia'
+import Repository from '../api/Repository.js';
+import apiUsers from '../api/apis/apiUsers.js';
+
 
 export const useLoginStore = defineStore('login', {
 
@@ -15,24 +18,32 @@ export const useLoginStore = defineStore('login', {
             
         },
         async loginSession(username, password){
-            const response = axios.get("http://localhost:8080/api/login", {
-                auth:{
-                    username: username,
-                    password: password
-                }
-            });
 
-            
+            const api = new Repository('users');
+            const apiUsers = api.chooseApi();
 
-            this.statusLogin = (await response).status;
-            this.roleLogin = (await response).data.role;
+            const response = await apiUsers.acces(username, password);
 
-            const responseSession = [];
+            console.log(response.status);
 
-            responseSession.push((await response).status);
-            responseSession.push((await response).data.role);
+            this.statusLogin = response.status
+            this.roleLogin = response.data.role
 
-            return responseSession;
+            return response;
+        },
+        async register(){
+
+            const api = new Repository('users');
+            const apiUsers = api.chooseApi();
+
+            const response = await apiUsers.register();
+
+            console.log(response.status);
+
+            this.statusLogin = response.status
+            this.roleLogin = response.data.role
+
+            return response;
         }
     },
 });
