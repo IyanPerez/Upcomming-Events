@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sala78.upcommingevents.models.Event;
-import com.sala78.upcommingevents.models.User;
 import com.sala78.upcommingevents.repositories.EventRepository;
-import com.sala78.upcommingevents.repositories.UserRepository;
 
 @Service
-public class ServiceEvents {
+public class EventService {
 
     private EventRepository repository;
 
-    public ServiceEvents(EventRepository repository) {
+    public EventService(EventRepository repository) {
         this.repository = repository;
     }
 

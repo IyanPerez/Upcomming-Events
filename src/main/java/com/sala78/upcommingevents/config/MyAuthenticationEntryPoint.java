@@ -23,8 +23,6 @@ public class MyAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 PrintWriter writer = response.getWriter();
                 writer.println("HTTP Status 401 - " + authException.getMessage());
-                System.out.println("holaaa");
-                
     }
 
     @Override
