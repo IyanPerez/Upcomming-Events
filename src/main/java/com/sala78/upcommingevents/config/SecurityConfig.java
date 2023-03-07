@@ -30,13 +30,8 @@ public class SecurityConfig {
 
     private JpaUserDetailsService service;
 
-<<<<<<< HEAD
-    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService){
-        this.jpaUserDetailsService = jpaUserDetailsService;
-=======
     public SecurityConfig(JpaUserDetailsService service) {
         this.service = service;
->>>>>>> f26319d092c5a4722b0cbde2d94a32b51a7375ef
     }
 
     @Bean
