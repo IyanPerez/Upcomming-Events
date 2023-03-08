@@ -29,11 +29,7 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "roles_users",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
+    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {
@@ -80,7 +76,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id_user=" + id_user + ", username=" + username + ", password=" + password + roles +"]";
+        return "User [id_user=" + id_user + ", username=" + username + ", password=" + password + roles + "]";
     }
 
 }
