@@ -1,6 +1,8 @@
 <script setup>
   import { defineComponent } from 'vue';
-  
+      import { onMounted } from 'vue';
+    import axios from 'axios';
+    
    defineComponent({
     props: {
         title: {
@@ -57,7 +59,6 @@
       object-fit: cover;
     }
   }
-  
   .card-content {
 
     h3 {
@@ -66,4 +67,5 @@
     
   }
   </style>
+
   
