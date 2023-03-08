@@ -1,15 +1,31 @@
 <script setup>
   import { defineComponent } from 'vue';
-      import { onMounted } from 'vue';
-    import axios from 'axios';
+  import { onMounted } from 'vue';
+  import axios from 'axios';
+  import { eventStore } from '../stores/eventStoreTest';
+  import { onBeforeMount } from 'vue';
+  import eventPayload from '../api/apis/payloads/eventPayload'
+
+  const eventstore = eventStore();
+
+  onBeforeMount(()=>{
+
+    eventstore.getAll();
+
+  })
     
-   defineComponent({
+const props = defineProps({
+  event:{
+    type: eventPayload,
+  }
+})
+/*  defineComponent({
     props: {
-        title: {
+      title: {
           type: String,
           required: true
         },
-        date: {
+      date: {
             type: Date,
             required: true
         },
@@ -22,19 +38,19 @@
         required: true
       }
     }
-  });
+  })*/
   </script>
   
 
 <template>
     <div class="card">
       <div class="card-image">
-     <img src="../assets/img/Detail View.png" alt="">
+     
       </div>
       <div class="card-content">
-        <h3>{{ title }}</h3>
-        <p>{{ description }}</p>
-        <p>{{ capacity }}</p>
+        <h3>{{ event.id }}</h3>
+        <p>{{ event.description }}</p>
+        <p>{{ event.title }}</p>
       </div>
     </div>
   </template>
