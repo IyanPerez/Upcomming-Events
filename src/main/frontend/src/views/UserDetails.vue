@@ -18,7 +18,7 @@ const showInfo = computed(()=>{
 <h1 :class="showInfo">hola usuario logged</h1>
 <CardsComponent />
         
-    
+    <button @click="showInfo"></button> 
 </template>
 
 
