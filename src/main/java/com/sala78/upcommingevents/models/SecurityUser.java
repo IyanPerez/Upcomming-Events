@@ -1,6 +1,7 @@
 package com.sala78.upcommingevents.models;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Set;
 
@@ -24,11 +25,11 @@ public class SecurityUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = user.getRoles();
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        
+
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
-        
+
         return authorities;
 
     }

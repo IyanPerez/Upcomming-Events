@@ -21,13 +21,15 @@ axios.get('http://localhost:8080/api/events',{auth:{username:useloginstore.login
 <h1 :class="showInfo">hola usuario logged</h1>
 <CardsComponent />
         
-    
+    <button @click="showInfo"></button> 
 </template>
+
 
 
 <style lang="scss" scoped>
 
 .show{
+    background-color:#ECE5E5;
     visibility: visible;
 }
 .hidden{

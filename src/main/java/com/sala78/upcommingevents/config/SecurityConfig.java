@@ -17,48 +17,48 @@ import com.sala78.upcommingevents.services.JpaUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private MyAuthenticationEntryPoint authenticationEntryPoint;
+        @Autowired
+        private MyAuthenticationEntryPoint authenticationEntryPoint;
 
-    private JpaUserDetailsService service;
+        private JpaUserDetailsService service;
 
-    public SecurityConfig(JpaUserDetailsService service) {
-        this.service = service;
-    }
+        public SecurityConfig(JpaUserDetailsService service) {
+                this.service = service;
+        }
 
-    @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .cors()
-                .and()
-                .headers(header -> header.frameOptions().sameOrigin())
-                .csrf(csrf -> csrf.disable())
-                .formLogin(form -> form.disable())
-                .logout(logout -> logout
-                        .logoutUrl("/api/logout")
-                        .deleteCookies("JSESSIONID"))
-                .authorizeRequests((auth) -> auth
-                        .antMatchers("/api/register").permitAll()
-                        .antMatchers("/api/login").hasAnyRole("ADMIN","USER")
-                        .antMatchers("/api/events").hasAnyRole("ADMIN","USER")
-                        .antMatchers("/api/user").hasRole("USER")
-                        .antMatchers("/api/admin").hasRole("ADMIN")
-                        .anyRequest()
-                        .authenticated())
-                .userDetailsService(service)
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                .httpBasic(basic -> basic
-                        .authenticationEntryPoint(authenticationEntryPoint))
-                .httpBasic(Customizer.withDefaults());
+        @Bean
+        SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                http
+                                .cors()
+                                .and()
+                                .headers(header -> header.frameOptions().sameOrigin())
+                                .csrf(csrf -> csrf.disable())
+                                .formLogin(form -> form.disable())
+                                .logout(logout -> logout
+                                                .logoutUrl("/api/logout")
+                                                .deleteCookies("JSESSIONID"))
+                                .authorizeRequests((auth) -> auth
+                                                .antMatchers("/api/register").permitAll()
+                                                .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
+                                                .antMatchers("/api/events").hasAnyRole("ADMIN", "USER")
+                                                .antMatchers("/api/user").hasRole("USER")
+                                                .antMatchers("/api/admin").hasRole("ADMIN")
+                                                .anyRequest()
+                                                .authenticated())
+                                .userDetailsService(service)
+                                .sessionManagement(session -> session
+                                                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                                .httpBasic(basic -> basic
+                                                .authenticationEntryPoint(authenticationEntryPoint))
+                                .httpBasic(Customizer.withDefaults());
 
-        return http.build();
+                return http.build();
 
-    }
+        }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+        @Bean
+        PasswordEncoder passwordEncoder() {
+                return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        }
 
 }
