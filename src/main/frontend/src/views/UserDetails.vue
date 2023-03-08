@@ -18,14 +18,15 @@ const showInfo = computed(()=>{
 <h1 :class="showInfo">hola usuario logged</h1>
 <CardsComponent />
         
-    
+    <button @click="showInfo"></button> 
 </template>
 
-<style>
-*{
-    background-color: #9e9898;
+
+
 <style lang="scss" scoped>
+
 .show{
+    background-color:#ECE5E5;
     visibility: visible;
 }
 .hidden{

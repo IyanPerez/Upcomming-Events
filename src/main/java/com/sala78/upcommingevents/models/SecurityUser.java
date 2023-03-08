@@ -1,15 +1,15 @@
 package com.sala78.upcommingevents.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class SecurityUser implements UserDetails{
+public class SecurityUser implements UserDetails {
 
     private User user;
 
@@ -23,12 +23,15 @@ public class SecurityUser implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        
-        return Arrays.stream(user
-                            .getRoles()
-                            .split(","))
-                            .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-                    
+        Set<Role> roles = user.getRoles();
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+        }
+
+        return authorities;
+
     }
 
     @Override
@@ -61,5 +64,10 @@ public class SecurityUser implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "SecurityUser [user=" + user.toString() + "]";
+    }
+
 }
