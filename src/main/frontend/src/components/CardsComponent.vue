@@ -2,28 +2,7 @@
   import { defineComponent } from 'vue';
       import { onMounted } from 'vue';
     import axios from 'axios';
-
-    // export default {
-    //     setup() {
-
-    //         const characters = [];
-
-    //         const fetchData = async () => {
-    //             const response = await axios.get('https://rickandmortyapi.com/api/character/');
-    //             characters.push(...response.data.results);
-    //             console.log(response.data.results);
-    //         };
-
-    //         onMounted (fetchData); 
-            
-    //         return {
-    //             characters,
-    //         };
-
-    //     }
-    // }
     
-
    defineComponent({
     props: {
         title: {
@@ -80,18 +59,6 @@
       object-fit: cover;
     }
   }
-    //   <div id="primeroDiv">ç
-    //     <div v-if="characters.lenght" id="segundoDiv">
-    //         <div v-for="character in characters" :key="character.id" class="card">
-    //             <div style="display: inline-block; padding: 16px; margin: 16px;">
-    //                 <img :src="character.image" alt="Character Image" class="characterImg">
-    //                 <h3 class="characterName">{{ character.name }}</h3>
-    //                 <p>Status:{{ character.status }}</p>
-    //                 <p>Original: {{ character.origin.name }}</p>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
   .card-content {
 
     h3 {

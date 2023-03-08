@@ -1,12 +1,16 @@
 <script setup>
-import CardsComponent from '../components/CardsComponent.vue';
+import CardsComponentTest from '../components/CardsComponentTest.vue';
 </script>
 
 <template>
+    
     <main>
-        <CardsComponent/>
+
+        <CardsComponentTest />
+   
     </main>
     
+
 </template>
 
 <style lang="scss" scoped>
