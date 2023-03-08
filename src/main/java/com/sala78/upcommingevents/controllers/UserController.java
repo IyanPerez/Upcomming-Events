@@ -18,7 +18,7 @@ import com.sala78.upcommingevents.services.UserService;
 @RestController
 @RequestMapping(path = "/api")
 public class UserController {
-    
+
     private UserService service;
 
     public UserController(UserService service) {
@@ -43,6 +43,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(json);
         }
     }
+
     @GetMapping("")
     public List<User> listAll() {
         return service.listAll();
