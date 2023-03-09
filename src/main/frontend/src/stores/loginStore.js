@@ -2,7 +2,7 @@ import axios from 'axios';
 import { defineStore } from 'pinia'
 import Repository from '../api/Repository.js';
 import apiUsers from '../api/apis/apiUsers.js';
-
+import { watch } from 'vue';
 
 export const useLoginStore = defineStore('login', {
 
@@ -10,7 +10,7 @@ export const useLoginStore = defineStore('login', {
         login: {},
         statusLogin: 0,
         roleLogin: '',
-        isAuthenticate: false
+        isAuthenticate: false,
     }),
 
     actions: {

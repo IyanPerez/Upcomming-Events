@@ -48,9 +48,9 @@ const props = defineProps({
      
       </div>
       <div class="card-content">
-        <h3>{{ event.id }}</h3>
+        <!-- <h3>{{ event.id }}</h3>
         <p>{{ event.description }}</p>
-        <p>{{ event.title }}</p>
+        <p>{{ event.title }}</p> -->
       </div>
     </div>
   </template>
