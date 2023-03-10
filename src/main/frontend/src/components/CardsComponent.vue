@@ -6,20 +6,20 @@
   import { onBeforeMount } from 'vue';
   import eventPayload from '../api/apis/payloads/eventPayload'
 
-  const eventstore = eventStore();
+  /* const eventstore = eventStore();
 
   onBeforeMount(()=>{
 
     eventstore.getAll();
 
-  })
+  }) */
     
-const props = defineProps({
+/* const props = defineProps({
   event:{
     type: eventPayload,
   }
-})
-/*  defineComponent({
+}) */
+ defineComponent({
     props: {
       title: {
           type: String,
@@ -38,7 +38,7 @@ const props = defineProps({
         required: true
       }
     }
-  })*/
+  })
   </script>
   
 
@@ -48,9 +48,9 @@ const props = defineProps({
      
       </div>
       <div class="card-content">
-        <!-- <h3>{{ event.id }}</h3>
-        <p>{{ event.description }}</p>
-        <p>{{ event.title }}</p> -->
+        <h3>{{ title }}</h3>
+        <p>{{ description }}</p>
+        <p>{{ capacity }}</p>
       </div>
     </div>
   </template>
