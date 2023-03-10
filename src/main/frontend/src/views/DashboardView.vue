@@ -6,8 +6,8 @@ import CardsComponentTest from '../components/CardsComponentTest.vue';
     
     <main>
 
-        <CardsComponentTest />
-   
+        <!-- <CardsComponentTest /> -->
+     
     </main>
     
 

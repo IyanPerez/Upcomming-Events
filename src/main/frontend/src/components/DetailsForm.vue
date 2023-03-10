@@ -32,7 +32,7 @@
 
 
 .form-container{
-    margin: 0 auto;
+ margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
