@@ -8,8 +8,6 @@ import com.sala78.upcommingevents.models.Event;
 
 import com.sala78.upcommingevents.repositories.EventRepository;
 
-import com.sala78.upcommingevents.repositories.EventRepository;
-
 @Service
 public class EventService {
 
@@ -28,7 +26,9 @@ public class EventService {
     }
 
     public Event save(Event event) {
-        Event eventSaved = repository.save(event);
-        return eventSaved;
+
+        Event eventSaved = new Event(null, event.getTitle(), event.getDate_hour(), event.getNumber_participants(), event.getDescription());
+
+        return repository.save(eventSaved);
     }
 }

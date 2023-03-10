@@ -42,6 +42,7 @@ public class SecurityConfig {
                                                 .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
                                                 .antMatchers("/api/events").hasAnyRole("ADMIN", "USER")
                                                 .antMatchers("/api/user").hasRole("USER")
+                                                .antMatchers("/api/users/**").hasRole("USER")
                                                 .antMatchers("/api/admin").hasRole("ADMIN")
                                                 .anyRequest()
                                                 .authenticated())

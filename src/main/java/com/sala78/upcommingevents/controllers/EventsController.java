@@ -49,7 +49,7 @@ public class EventsController {
         try {
             return ResponseEntity.ok(service.save(newEvent));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error");
+            return ResponseEntity.status(500).body(e.getMessage());
         }
     }
 }
