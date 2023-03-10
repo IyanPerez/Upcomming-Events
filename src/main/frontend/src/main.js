@@ -19,9 +19,32 @@ const vuetify = createVuetify({
   directives,
 })
 
+const pinia = createPinia()
+
+pinia.use((context)=>{
+
+  const storeId = context.store.$id
+
+  const serializer = {
+    serialize: JSON.stringify,
+    deserializa: JSON.parse
+  }
+
+  const fromStorage = serializer.deserializa(window.localStorage.getItem(storeId))
+
+  if(fromStorage){
+    context.store.$patch(fromStorage)
+  }
+
+  context.store.$subscribe((mutation, state)=>{
+    window.localStorage.setItem(storeId, serializer.serialize(state))
+  })
+})
+
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(pinia)
+app.use(router)
      
 app.use(VueAxios, axios)
 app.use(vuetify)
