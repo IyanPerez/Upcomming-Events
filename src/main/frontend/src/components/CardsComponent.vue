@@ -127,7 +127,8 @@ h1 {
 .card__buttons {
   position: absolute;
   flex-direction: row;
-  left: 75px;
-  gap:45px;
+  left:179px;
+    
+  
 }
 </style>
