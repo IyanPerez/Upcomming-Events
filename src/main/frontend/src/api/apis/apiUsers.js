@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../interceptors/api";
 
 export default class apiUsers{
 
@@ -9,14 +10,21 @@ export default class apiUsers{
     }
 
     async acces(username, password){
-        const response = axios.get(this.baseUrl + "/login", {
+        /* const response = axios.get(this.baseUrl + "/login", {
           auth: {
             username: username,
             password: password,
           }
-        });
-        const getBody = (await response);
+        });   */  
+        const response= await api.get('/login', {
+            auth: {
+              username: username,
+              password: password,
+            }
+          });
 
+        const getBody = response;
+        
         return getBody
     }
 
