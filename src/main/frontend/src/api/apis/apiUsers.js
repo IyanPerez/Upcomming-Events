@@ -50,6 +50,6 @@ export default class apiUsers{
     encoder(username, password){
         let encode = window.btoa(`${username}:${password}`)
 
-        return ;
+        return encode;
     }
 }

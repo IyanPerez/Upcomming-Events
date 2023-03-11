@@ -8,11 +8,17 @@ export default class eventService{
         this.baseUrl = 'http://localhost:8080/api';
     }
 
-    async getAllEVents(){
-        const response = axios.get(this.baseUrl + '/events', {auth:{
-            username: 'user',
-            password: 'password'
-        }});
+    async getAllEVents(){    
+            /* axios.defaults.withCredentials = true;  */
+        const response = axios.get(this.baseUrl + '/events',{
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+            /* auth:{
+                username: 'user',
+                password: 'password'
+            } */
+        });
 
 
         const getBody = (await response);
