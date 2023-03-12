@@ -18,9 +18,11 @@ public class AuthController {
     public ResponseEntity<Map<String,String>> access(){
         var auth = SecurityContextHolder.getContext().getAuthentication();
 
+        
         Map<String, String> json = new HashMap<>();
         json.put("message","Logged");
         json.put("username", auth.getName());
+        json.put("details", auth.getDetails().toString());
         json.put("role", auth.getAuthorities().iterator().next().toString());
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
