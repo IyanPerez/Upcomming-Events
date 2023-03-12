@@ -46,7 +46,23 @@ export default class apiUsers{
 
         return getBody
     }
+    async addUserToEvent(idUser, idEvent){
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}`,{
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+            /* auth:{
+                username: 'user',
+                password: 'password'
+            } */
+        });
 
+        const getResponse = await response;
+
+        return getResponse;
+    }
+    async  deleteUserToEvent(){}
+    
     encoder(username, password){
         let encode = window.btoa(`${username}:${password}`)
 

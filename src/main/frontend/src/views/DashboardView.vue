@@ -3,44 +3,33 @@
 import CardsComponent from '../components/CardsComponent.vue';
 import axios from 'axios';
 import api from '../api/interceptors/api';
-  import { eventStore } from '../stores/eventStoreTest';
-  import { onBeforeMount } from 'vue';
-  import eventPayload from '../api/apis/payloads/eventPayload'
+import { eventStore } from '../stores/eventStoreTest';
+import { onBeforeMount } from 'vue';
+import eventPayload from '../api/apis/payloads/eventPayload'
 
-  const eventstore = eventStore();
+const eventstore = eventStore();
 
-  onBeforeMount(()=>{
+onBeforeMount(() => {
 
-    eventstore.getAll();
+  eventstore.getAll();
 
-  })
-    
+})
+
 const props = defineProps({
-  event:{
+  event: {
     type: eventPayload,
   }
 })
 </script>
 
 <template>
-    
-    <main>
+  <main>
 
-        <CardsComponent
-        :title="'carta'"
-        :capacity="10"
-        :description="'holaaaa'"
-        />
-        <!-- <CardsComponentTest /> -->
-        
-   
-    </main>
-    
+    <CardsComponent :title="'carta'" :capacity="10" :description="'holaaaa'" />
+    <!-- <CardsComponentTest /> -->
 
+
+  </main>
 </template>
 
-<style lang="scss" scoped>
-
-
-
-</style>
+<style lang="scss" scoped></style>

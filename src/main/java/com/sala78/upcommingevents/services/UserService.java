@@ -54,6 +54,22 @@ public class UserService {
         return repository.save(userDB);
     }
 
+    public User deleteEventOfUser(Long idUser, Long idEvent){
+        User userDB = repository.findById(idUser).orElseThrow();    
+        
+        Set<Event> events = new HashSet<>();
+
+        for (Event event : userDB.getEvents()) {
+            
+            if(event.getId() != idEvent) events.add(event);
+
+        }
+
+        userDB.setEvents(events);
+
+        return repository.save(userDB);
+    }
+
     public Set<Event> listAllEventsOfUser(String username){
         User userDB = repository.findByUsername(username).orElseThrow();
 

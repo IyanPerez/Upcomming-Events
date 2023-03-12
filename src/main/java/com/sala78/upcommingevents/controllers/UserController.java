@@ -47,13 +47,30 @@ public class UserController {
         }
     }
 
-    @PutMapping("/users/{id}/events/{idEvent}")
+    @PutMapping("/users/{id}/events/{idEvent}/add")
     public ResponseEntity<Map<String,String>> addEvent(@PathVariable Long id, @PathVariable Long idEvent) {
         try {
             service.addEvent(id, idEvent);
             Map<String, String> json = new HashMap<>();
 
             json.put("message", "event added");
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
+        } catch (Exception e) {
+            Map<String, String> json = new HashMap<>();
+
+            json.put("problem", e.getMessage());
+            json.put("message", "Error to added event");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(json);
+        }
+    }
+
+    @PutMapping("/users/{idUser}/events/{idEvent}/remove")
+    public ResponseEntity<Map<String,String>> removeEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+        try {
+            service.deleteEventOfUser(idUser, idEvent);
+            Map<String, String> json = new HashMap<>();
+
+            json.put("message", "event removed");
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
         } catch (Exception e) {
             Map<String, String> json = new HashMap<>();
