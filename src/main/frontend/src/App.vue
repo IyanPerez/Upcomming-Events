@@ -17,7 +17,7 @@ import Buttons from "./components/Buttons.vue";
   <!-- <DashboardView /> -->
   
   <CardsComponent/>
-  <!-- <DetailsForm/> -->
+
 </template>
 
 <style lang="scss" scoped>
