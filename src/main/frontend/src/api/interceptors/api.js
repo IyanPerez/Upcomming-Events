@@ -6,17 +6,13 @@ const api = axios.create({
 
 api.interceptors.response.use(
   response => {
-    const cookies = response.data.details.split(',')
-      for (const cookie of cookies) {
-        if (cookie.startsWith(' SessionId')) {
-          const sessionId = cookie.split('=')[1].split(']')[0];
+          const sessionId = response.data.JSESSIONID
 
-          // do something with sessionId, such as store it in a cookie or pass it to the Vuex store
+
+
           sessionStorage.setItem('JSESSIONID', sessionId);
           document.cookie = `JSESSIONID=${sessionId}`
-          
-        }
-    }
+
     return response;
   },
   error => {

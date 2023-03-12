@@ -24,6 +24,8 @@ export default class apiUsers{
           });
 
         const getBody = response;
+
+        console.log(response.data);
         
         return getBody
     }
@@ -46,8 +48,9 @@ export default class apiUsers{
 
         return getBody
     }
+
     async addUserToEvent(idUser, idEvent){
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}`,{
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{
             headers: {
                 'Authorization': `${document.cookie}`,
             },
@@ -61,7 +64,22 @@ export default class apiUsers{
 
         return getResponse;
     }
-    async  deleteUserToEvent(){}
+    
+    async  deleteUserToEvent(idUser, idEvent){
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/remove`,{
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+            /* auth:{
+                username: 'user',
+                password: 'password'
+            } */
+        });
+
+        const getResponse = await response;
+
+        return getResponse;
+    }
     
     encoder(username, password){
         let encode = window.btoa(`${username}:${password}`)

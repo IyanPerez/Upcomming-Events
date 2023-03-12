@@ -25,7 +25,6 @@ export const useLoginStore = defineStore('login', {
 
             const response = await apiUsers.acces(username, password);
 
-            console.log(response.status);
 
             this.statusLogin = response.status
             this.roleLogin = response.data.role
