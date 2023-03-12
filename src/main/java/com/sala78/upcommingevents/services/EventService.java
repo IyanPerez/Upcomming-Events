@@ -27,8 +27,22 @@ public class EventService {
 
     public Event save(Event event) {
 
-        Event eventSaved = new Event(null, event.getTitle(), event.getDate_hour(), event.getNumber_participants(), event.getDescription());
+        Event eventSaved = new Event(null, event.getTitle(), event.getDate_hour(), event.getNumber_participants(),
+                event.getDescription());
 
         return repository.save(eventSaved);
+    }
+
+    public Event update(Long id, Event event){
+
+        return repository.findById(id)
+                .map(eventToUpdate -> {
+                    eventToUpdate.setTitle(event.getTitle());
+                    eventToUpdate.setDescription(event.getDescription());
+                    eventToUpdate.setNumber_participants(event.getNumber_participants());
+                    eventToUpdate.setDate_hour(event.getDate_hour());
+                    eventToUpdate.setImage(event.getImage());
+                    return repository.save(eventToUpdate);
+                }).orElseThrow();
     }
 }
