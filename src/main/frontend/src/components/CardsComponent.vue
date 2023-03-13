@@ -1,87 +1,162 @@
 <script setup>
-  import { defineComponent } from 'vue';
-  import { onMounted } from 'vue';
-  import axios from 'axios';
-  import { eventStore } from '../stores/eventStoreTest';
-  import { onBeforeMount } from 'vue';
-  import eventPayload from '../api/apis/payloads/eventPayload'
+import { defineComponent } from "vue";
+import { onMounted } from "vue";
+import { eventStore } from "../stores/eventStoreTest";
+import { onBeforeMount } from "vue";
+import eventPayload from "../api/apis/payloads/eventPayload";
+import DetailsForm from "./DetailsForm.vue";
+import { ref } from "vue";
 
-  /* const eventstore = eventStore();
 
-  onBeforeMount(()=>{
 
-    eventstore.getAll();
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+    default: "sdahsdasdasd"
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  capacity: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
 
-  }) */
-    
-/* const props = defineProps({
-  event:{
-    type: eventPayload,
-  }
-}) */
- defineComponent({
-    props: {
-      title: {
-          type: String,
-          required: true
-        },
-      date: {
-            type: Date,
-            required: true
-        },
-      capacity: {
-        type: Number,
-        required: true
-      },
-      description: {
-        type: String,
-        required: true
-      }
-    }
-  })
-  </script>
-  
+//methods para almacenar los datos de las props
+
+const title = ref("");
+const date = ref("");
+const capacity = ref("");
+const description = ref("");
+
+const events = {
+  title: title.value,
+  date: date.value,
+  capacity: capacity.value,
+  description: description.value,
+};
+// onMounted(() => {
+//   title = props.title.valueOf;
+//   date.value = props.date;
+//   capacity.value = props.capacity;
+//   description.value = props.description;
+// });
+
+function Send() {
+  console.log(events);
+}
+</script>
 
 <template>
-    <div class="card">
-      <div class="card-image">
-     
+  <div>
+    <h1 class="mx-4 mt-4">Create Event</h1>
+    <div class="d-flex justify-between ml-4">
+      <div class="card__event">
+        <div class="card__content">
+          <div class="card__image">
+            <div class="card__icon">
+              <v-btn variant="outlined" size="large" icon color="warning"
+                ><v-icon>mdi-pencil</v-icon></v-btn
+              >
+            </div>
+            <img src="../assets/img/card-img.png" alt="card-background" />
+          </div>
+
+          <div class="card__description">
+            <h3>{{ title }}</h3>
+            <p>{{ description }}</p>
+            <p class="card__date">{{ date }}</p>
+            <img
+              src="../assets/img/vector-people-cap.png"
+              alt="people-vector"
+            />
+            <p class="card__capacity">{{ capacity }}</p>
+          </div>
+        </div>
+        <div class="card__buttons mt-4">
+          <v-btn variant="flat" color="success" class="mr-2" v-on:click="Send()">SUBMIT</v-btn
+          >
+        </div>
       </div>
-      <div class="card-content">
-        <h3>{{ title }}</h3>
-        <p>{{ description }}</p>
-        <p>{{ capacity }}</p>
+      <div class="card__details mx-4">
+        <DetailsForm />
       </div>
     </div>
-  </template>
-  
-  
-  <style scoped lang="scss">
-  .card {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-image {
-    height: 25em;
+  </div>
+</template>
+
+<style scoped lang="scss">
+h1 {
+  position: relative;
+  margin-left: 10px;
+  top: 36px;
+  color: rgb(31, 42, 130);
+  font-size: 30px;
+}
+.card__event {
+  background-color: #e2e2e2;
+  border-radius: 12px;
+  position: relative;
+  top: 55px;
+  .card__image {
+    .card__icon {
+      position: relative;
+      z-index: 1;
+      left: 7px;
+    }
     img {
-      height: 100%;
+      position: relative;
       width: 100%;
-      object-fit: cover;
+      bottom: 65px;
     }
   }
-  .card-content {
-
+  .card__description {
     h3 {
-      margin-top: 0;
-    }
-    
-  }
-  </style>
+      position: absolute;
+      right: 95px;
+      bottom: 65px;
+      font-size: larger;
+      color: blue;
 
-  
+      font-weight: 800;
+    }
+
+    p {
+      position: absolute;
+      bottom: 12px;
+      left: 120px;
+      margin-top: 2px;
+    }
+    .card__date {
+      position: relative;
+      bottom: 70px;
+      color: blue;
+      left: 5px;
+      font-weight: 800;
+    }
+    img {
+      position: absolute;
+      left: 16px;
+      bottom: 20px;
+    }
+    .card__capacity {
+      position: absolute;
+      bottom: -2px;
+      left: 18px;
+    }
+  }
+}
+
+.card__buttons {
+  position: absolute;
+  flex-direction: row;
+  left: 179px;
+}
+</style>

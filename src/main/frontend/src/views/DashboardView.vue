@@ -25,11 +25,13 @@ const props = defineProps({
 <template>
   <main>
 
-    <CardsComponent :title="'carta'" :capacity="10" :description="'holaaaa'" />
-    <!-- <CardsComponentTest /> -->
+        <!-- <CardsComponentTest /> -->
+     
+    </main>
+    
 
 
-  </main>
+  
 </template>
 
 <style lang="scss" scoped></style>
