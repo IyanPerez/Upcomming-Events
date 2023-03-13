@@ -7,13 +7,10 @@ import eventPayload from "../api/apis/payloads/eventPayload";
 import DetailsForm from "./DetailsForm.vue";
 import { ref } from "vue";
 
-
-
 const props = defineProps({
   title: {
     type: String,
     required: true,
-    default: "sdahsdasdasd"
   },
   date: {
     type: String,
@@ -28,30 +25,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-//methods para almacenar los datos de las props
-
-const title = ref("");
-const date = ref("");
-const capacity = ref("");
-const description = ref("");
-
-const events = {
-  title: title.value,
-  date: date.value,
-  capacity: capacity.value,
-  description: description.value,
-};
-// onMounted(() => {
-//   title = props.title.valueOf;
-//   date.value = props.date;
-//   capacity.value = props.capacity;
-//   description.value = props.description;
-// });
-
-function Send() {
-  console.log(events);
-}
 </script>
 
 <template>
@@ -79,10 +52,6 @@ function Send() {
             />
             <p class="card__capacity">{{ capacity }}</p>
           </div>
-        </div>
-        <div class="card__buttons mt-4">
-          <v-btn variant="flat" color="success" class="mr-2" v-on:click="Send()">SUBMIT</v-btn
-          >
         </div>
       </div>
       <div class="card__details mx-4">
@@ -154,9 +123,5 @@ h1 {
   }
 }
 
-.card__buttons {
-  position: absolute;
-  flex-direction: row;
-  left: 179px;
-}
+
 </style>
