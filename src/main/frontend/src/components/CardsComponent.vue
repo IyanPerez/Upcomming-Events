@@ -1,71 +1,31 @@
 <script setup>
-  import { defineComponent } from 'vue';
-  import { onMounted } from 'vue';
-  import axios from 'axios';
-  import { eventStore } from '../stores/eventStoreTest';
-  import { onBeforeMount } from 'vue';
-  import eventPayload from '../api/apis/payloads/eventPayload'
-
-  /* const eventstore = eventStore();
-
-  onBeforeMount(()=>{
-
-    eventstore.getAll();
-
-  }) */
-    
-/* const props = defineProps({
-  event:{
-    type: eventPayload,
-  }
-}) */
- defineComponent({
-    props: {
-      title: {
-          type: String,
-          required: true
-        },
-      date: {
-            type: Date,
-            required: true
-        },
-      capacity: {
-        type: Number,
-        required: true
-      },
-      description: {
-        type: String,
-        required: true
-      }
-    }
-  })
-  </script>
-  
-
-import Buttons from "./Buttons.vue";
+import { defineComponent } from "vue";
+import { onMounted } from "vue";
+import { eventStore } from "../stores/eventStoreTest";
+import { onBeforeMount } from "vue";
+import eventPayload from "../api/apis/payloads/eventPayload";
 import DetailsForm from "./DetailsForm.vue";
 import { ref } from "vue";
 
-const card = defineProps({
+
+
+const props = defineProps({
   title: {
     type: String,
     required: true,
-    default: " ",
+    default: "sdahsdasdasd"
   },
   date: {
     type: String,
     required: true,
-    default: " ",
   },
   capacity: {
     type: Number,
     required: true,
-    default: " ",
   },
   description: {
     type: String,
     required: true,
-    default: " ",
   },
 });
 
@@ -76,14 +36,21 @@ const date = ref("");
 const capacity = ref("");
 const description = ref("");
 
-function sentForm() {
-  const eventsSaved = {
-    title: title.value,
-    date: date.value,
-    capacity: capacity.value,
-    description: description.value,
-  };
-  console.log(eventsSaved);
+const events = {
+  title: title.value,
+  date: date.value,
+  capacity: capacity.value,
+  description: description.value,
+};
+// onMounted(() => {
+//   title = props.title.valueOf;
+//   date.value = props.date;
+//   capacity.value = props.capacity;
+//   description.value = props.description;
+// });
+
+function Send() {
+  console.log(events);
 }
 </script>
 
@@ -114,7 +81,8 @@ function sentForm() {
           </div>
         </div>
         <div class="card__buttons mt-4">
-          <Buttons />
+          <v-btn variant="flat" color="success" class="mr-2" v-on:click="Send()">SUBMIT</v-btn
+          >
         </div>
       </div>
       <div class="card__details mx-4">
