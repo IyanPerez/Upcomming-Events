@@ -6,7 +6,7 @@ import DetailsForm from '../components/DetailsForm.vue';
 </script>
 
 <template>
-    <h1 class="mx-4 mt-4">Create Event</h1>
+    <h1 class="mx-6 my-2">Create Event</h1>
     
 
     <div class="main">

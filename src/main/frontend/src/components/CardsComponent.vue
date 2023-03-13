@@ -30,26 +30,26 @@ const props = defineProps({
 <template>
         <div class="card">
           <div class="card__image">
-            <v-btn id="edit__icon" variant="outlined" size="large" icon color="warning">
+            <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <img src="../assets/img/card-img.png" alt="card-background"/>
+            <!-- <img src="../assets/img/card-img.png" alt="card-background"/> -->
           </div>
 
           <div class="card__description">
             <div id="icons">
               <p class="card__date">{{ date }}12/12/1212</p>
-                <div id="capacity">
-                  <img
-                    src="../assets/img/vector-people-cap.png"
-                    alt="people-vector"
-                    />
-                  <p class="card__capacity">{{ capacity }}666</p>
-                </div>
+              <div id="capacity">
+                <img
+                  src="../assets/img/vector-people-cap.png"
+                  alt="people-vector"
+                  />
+                <p class="card__capacity">{{ capacity }}666</p>
+              </div>
             </div>
             <div id="description">
               <h3>{{ title }} Lorem ipsum dolor sit. </h3>
-              <p>{{ description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestias harum officia facilis ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis vel veniam nisi repudiandae omnis sed optio dolorum ratione quidem officia ex, nihil velit quia? </p>
+              <p>{{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis </p>
             </div>
 
           </div>
@@ -59,32 +59,47 @@ const props = defineProps({
 <style scoped lang="scss">
 
 .card{
-  width: 40%;
-  background-color: aqua;
+  width: 480px;
+  background-color: rgb(217, 217, 217);
+  border-radius: 3vw;
+  overflow: hidden;
 
   &__image{
+    height: 280px;
+    width: 480px;
     display: flex;
     flex-direction: column;
+    background-image: url("../assets/img/card-img.png");
+    background-size: contain;
 
     #edit__icon{
-      margin-bottom: -15vh;
-      z-index: 2;
+      margin: 4%;
     }
   }
   &__description{
     display: flex;
-
+    gap: 5%;
+    padding: 3%;
+    
     #icons{
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
+      #capacity{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
     }
+
     #description{
-      
       display: flex;
       flex-direction: column;
-
+      gap: 1vh;
+      width: 100%;
+    }
   }
-}
 }
 
 
