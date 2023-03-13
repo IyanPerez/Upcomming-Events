@@ -45,7 +45,7 @@ public class UserService {
         
         Event eventDBForId = eventRepository.findById(idEvent).orElseThrow();
 
-        Set<Event> events = new HashSet<>();
+        Set<Event> events = userDB.getEvents();
         
         events.add(eventDBForId);
 
