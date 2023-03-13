@@ -1,4 +1,23 @@
 <script setup>
+import{ref}from"vue";
+
+const title = ref("");
+const date = ref("");
+const capacity = ref("");
+const description = ref(" ");
+
+
+
+function send(){
+  const events = {
+   title:title.value,
+   date:date.value,
+   capacity:capacity.value,
+   description:description.value,
+  };
+  console.log(events);
+};
+
 
 
 </script>
@@ -8,7 +27,7 @@
       <h3>Title</h3>
     </div>
     <div class="title-content">
-      <!-- <p>{{ message }}</p> -->
+      <p>{{ message }}</p>
       <input v-model="title" placeholder="Enter a title" />
     </div>
     <div class="list-date-title">
@@ -18,14 +37,22 @@
     <div class="list-maxParticipants-title">
       <h3>Max participants</h3>
     </div>
-    <input class="form-maxParticipants" type="number" v-model="capacity" placeholder="max participants"/>
+    <input class="form-maxParticipants" type="number"
+      v-model="capacity"
+      placeholder="max participants"
+    />
     <div class="description-title">
       <h3>Description</h3>
     </div>
 
-    <p style="white-space: pre-line"></p>
+    <p style="white-space: pre-line">{{ message }}</p>
     <textarea v-model="description"></textarea>
   </div>
+
+   <div class="card__buttons mt-4">
+          <v-btn variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn
+          >
+        </div>
 </template>
 <style lang="scss" scoped>
 .form-container {
