@@ -21,7 +21,7 @@
       v-model.number="Number"
       placeholder="max participants"
     />
-    <div class="desciption-title">
+    <div class="description-title">
       <h3>Description</h3>
     </div>
 

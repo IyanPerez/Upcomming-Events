@@ -1,32 +1,47 @@
 <script setup>
-import { defineComponent } from "vue";
-import { onMounted } from "vue";
-import axios from "axios";
 import Buttons from "./Buttons.vue";
 import DetailsForm from "./DetailsForm.vue";
+import { ref } from "vue";
 
 const card = defineProps({
   title: {
     type: String,
     required: true,
-    default: "Title",
+    default: " ",
   },
   date: {
     type: String,
     required: true,
-    default: "20-12-2021",
+    default: " ",
   },
   capacity: {
     type: Number,
     required: true,
-    default: 12000,
+    default: " ",
   },
   description: {
     type: String,
     required: true,
-    default:"It was popularised in the 1960s with the release of Letraset sheets containing containing Lorem Ipsum passages, and more recently with desktop publishing",
+    default: " ",
   },
 });
+
+//methods para almacenar los datos de las props
+
+const title = ref("");
+const date = ref("");
+const capacity = ref("");
+const description = ref("");
+
+function sentForm() {
+  const eventsSaved = {
+    title: title.value,
+    date: date.value,
+    capacity: capacity.value,
+    description: description.value,
+  };
+  console.log(eventsSaved);
+}
 </script>
 
 <template>
@@ -98,7 +113,7 @@ h1 {
       bottom: 65px;
       font-size: larger;
       color: blue;
-      
+
       font-weight: 800;
     }
 
@@ -107,7 +122,6 @@ h1 {
       bottom: 12px;
       left: 120px;
       margin-top: 2px;
-      
     }
     .card__date {
       position: relative;
