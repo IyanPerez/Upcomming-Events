@@ -25,7 +25,7 @@ const submit = async () => {
 
   let test = await useloginstore.loginSession(username.value, password.value);
   
-  if(test.status==202)router.push({path:'/user/dashboard'});
+  if(test.status==202)router.push({name:'sessionLayout'});
 
 };
 

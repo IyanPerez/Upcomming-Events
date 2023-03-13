@@ -11,22 +11,27 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/user",
-      name: "userLayout",
-      component: () => import("../layouts/UserLayout.vue"),
+      path: "/session",
+      name: "sessionLayout",
+      component: () => import("../layouts/SessionLayout.vue"),
       meta: { requiresAuth: true },
       children: [
         {
-          path: "dashboard",
-          name: "dashboard",
-          component: () => import("../views/DashboardView.vue"),
-          meta: { requiresAuth: true },
-        },
-        {
-          path: "details",
-          name: "userDetails",
-          component: () => import("../views/UserDetails.vue"),
-          meta: { requiresAuth: true },
+          path: "user",
+          name: "user",
+          component: () => import("../layouts/UserLayout.vue"),
+          children: [
+            {
+              path: "dashboard",
+              name: "dashboard",
+              component: ()=> import("../views/DashboardView.vue")
+            },
+            {
+              path: "details",
+              name: "details",
+              component: ()=> import("../views/UserDetails.vue")
+            }
+          ],
         },
       ],
     },
@@ -36,6 +41,6 @@ router.beforeEach((to, from) => {
   const store = useLoginStore();
 
   if(to.meta.requiresAuth && !store.isAuthenticate) return {name: 'home'}
-  if(to.meta.requiresAuth && !store.isAuthenticate && store.roleLogin==='ROLE_USER') return {name: 'userLayout'}
+  if(to.name == 'sessionLayout' && store.roleLogin == 'ROLE_USER') router.push({name:'dashboard'})
 })
 export default router
