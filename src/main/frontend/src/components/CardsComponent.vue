@@ -1,4 +1,47 @@
 <script setup>
+  import { defineComponent } from 'vue';
+  import { onMounted } from 'vue';
+  import axios from 'axios';
+  import { eventStore } from '../stores/eventStoreTest';
+  import { onBeforeMount } from 'vue';
+  import eventPayload from '../api/apis/payloads/eventPayload'
+
+  /* const eventstore = eventStore();
+
+  onBeforeMount(()=>{
+
+    eventstore.getAll();
+
+  }) */
+    
+/* const props = defineProps({
+  event:{
+    type: eventPayload,
+  }
+}) */
+ defineComponent({
+    props: {
+      title: {
+          type: String,
+          required: true
+        },
+      date: {
+            type: Date,
+            required: true
+        },
+      capacity: {
+        type: Number,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      }
+    }
+  })
+  </script>
+  
+
 import Buttons from "./Buttons.vue";
 import DetailsForm from "./DetailsForm.vue";
 import { ref } from "vue";

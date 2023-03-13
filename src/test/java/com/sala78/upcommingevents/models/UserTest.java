@@ -50,9 +50,9 @@ public class UserTest {
         rolesRepository.save(role);
         userRepository.save(user);
 
-        User userDB = entityManager.find(User.class, user.getId_user());
+        User userDB = entityManager.find(User.class, user.getId());
 
-        assertThat("User", userDB.getId_user(), equalTo(1L));
+        assertThat("User", userDB.getId(), equalTo(1L));
         assertThat("User role", userDB.getRoles().size(), equalTo(1));
         assertThat("User role name", userDB.getRoles().contains(role));
 
