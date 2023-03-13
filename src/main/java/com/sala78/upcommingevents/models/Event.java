@@ -1,28 +1,23 @@
 package com.sala78.upcommingevents.models;
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity @Table(name = "events")
 public class Event {
-    
-    @OneToOne
-    private Image image;
-    @ManyToMany
-    private List<User> users;
 
     @Id @Column(name = "id_event") @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Long id_event;
+    private Long id;
     
     @Column(nullable = false)
     private String title;
@@ -36,13 +31,14 @@ public class Event {
     @Column(nullable = false)
     private String description;
 
+    @OneToOne
+    private Image image;
+
     public Event() {}
 
-    public Event(Image image, List<User> users, Long id_event, String title, Date date_hour,
+    public Event(Long id, String title, Date date_hour,
             Integer number_participants, String description) {
-        this.image = image;
-        this.users = users;
-        this.id_event = id_event;
+        this.id = id;
         this.title = title;
         this.date_hour = date_hour;
         this.number_participants = number_participants;
@@ -57,20 +53,13 @@ public class Event {
         this.image = image;
     }
 
-    public List<User> getUsers() {
-        return users;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public Long getId_event() {
-        return id_event;
-    }
-
-    public void setId_event(Long id_event) {
-        this.id_event = id_event;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

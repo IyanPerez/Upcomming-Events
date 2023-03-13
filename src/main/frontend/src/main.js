@@ -30,14 +30,14 @@ pinia.use((context)=>{
     deserializa: JSON.parse
   }
 
-  const fromStorage = serializer.deserializa(window.localStorage.getItem(storeId))
+  const fromStorage = serializer.deserializa(window.sessionStorage.getItem(storeId))
 
   if(fromStorage){
     context.store.$patch(fromStorage)
   }
 
   context.store.$subscribe((mutation, state)=>{
-    window.localStorage.setItem(storeId, serializer.serialize(state))
+    window.sessionStorage.setItem(storeId, serializer.serialize(state))
   })
 })
 

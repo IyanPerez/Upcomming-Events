@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../interceptors/api";
 
 export default class apiUsers{
 
@@ -9,14 +10,23 @@ export default class apiUsers{
     }
 
     async acces(username, password){
-        const response = axios.get(this.baseUrl + "/login", {
+        /* const response = axios.get(this.baseUrl + "/login", {
           auth: {
             username: username,
             password: password,
           }
-        });
-        const getBody = (await response);
+        });   */  
+        const response= await api.get('/login', {
+            auth: {
+              username: username,
+              password: password,
+            }
+          });
 
+        const getBody = response;
+
+        console.log(response.data);
+        
         return getBody
     }
 
@@ -39,9 +49,41 @@ export default class apiUsers{
         return getBody
     }
 
+    async addUserToEvent(idUser, idEvent){
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+            /* auth:{
+                username: 'user',
+                password: 'password'
+            } */
+        });
+
+        const getResponse = await response;
+
+        return getResponse;
+    }
+    
+    async  deleteUserToEvent(idUser, idEvent){
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/remove`,{
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+            /* auth:{
+                username: 'user',
+                password: 'password'
+            } */
+        });
+
+        const getResponse = await response;
+
+        return getResponse;
+    }
+    
     encoder(username, password){
         let encode = window.btoa(`${username}:${password}`)
 
-        return ;
+        return encode;
     }
 }
