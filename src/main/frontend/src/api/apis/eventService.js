@@ -11,19 +11,19 @@ export default class eventService{
     async getAllEVents(){    
             /* axios.defaults.withCredentials = true;  */
         const response = axios.get(this.baseUrl + '/events',{
-            headers: {
+            /* headers: {
                 'Authorization': `${document.cookie}`,
-            },
-            /* auth:{
+            }, */
+            auth:{
                 username: 'user',
                 password: 'password'
-            } */
+            }
         });
 
 
         const getBody = (await response);
 
-        console.log(getBody.data);
+        /* console.log(getBody.data); */
 
         return getBody;
     }

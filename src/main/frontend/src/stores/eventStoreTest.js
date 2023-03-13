@@ -15,9 +15,20 @@ export const eventStore = defineStore('event',{
 
             const eventsDB = await eventService.getAllEVents();
 
-            this.events = eventsDB
+            this.events = eventsDB.data
 
-            return eventsDB;
+            
+            return eventsDB.data;
+        },
+        async addUserToEvent(idUser, idEvent){
+            const api = new Repository('users');
+
+            const eventService = api.chooseApi();
+
+            const eventsDB = await eventService.addUserToEvent(idUser, idEvent);
+
+            console.log(eventsDB.status);
+
         }
     }
 })

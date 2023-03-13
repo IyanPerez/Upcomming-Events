@@ -50,14 +50,15 @@ export default class apiUsers{
     }
 
     async addUserToEvent(idUser, idEvent){
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{
-            headers: {
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{},
+        {
+            /* headers: {
                 'Authorization': `${document.cookie}`,
-            },
-            /* auth:{
+            }, */
+            auth: {
                 username: 'user',
                 password: 'password'
-            } */
+            }
         });
 
         const getResponse = await response;

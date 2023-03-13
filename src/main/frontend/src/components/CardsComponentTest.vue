@@ -1,42 +1,61 @@
-<script >
-  import { defineComponent, ref } from 'vue';
-      import { onMounted } from 'vue';
-    import axios from 'axios';
-
-    export default {
-        setup() {                                 
-
-            let characters = [];
-
-            const fetchData = async () => {
-                const response = await axios.get('https://rickandmortyapi.com/api/character/');
-                characters = response.data.results;
-                console.log(characters);
-            };
-
-            onMounted (fetchData); 
-            
-            return {
-                characters,
-            };
-
-        }
+<script setup>
+ import addButton from '../components/AddButton.vue'
+ const props = defineProps({
+    event:{
+        type: Object
     }
+ })
+ const emits = defineEmits(['addEvent'])
 
+ const emitAddEvent = () => {
+  emits('addEvent', props.event.id)
+ }
 </script>
 
 <template>
-     <div id="primeroDiv">
-        <div v-if="characters.lenght" id="segundoDiv">
-            <div v-for="character in characters" :key="character.id" class="card">
-                <div style="display: inline-block; padding: 16px; margin: 16px;">
-                    <img :src="character.image" alt="Character Image" class="characterImg">
-                    <h3 class="characterName">{{ character.name }}</h3>
-                    <p>Status:{{ character.status }}</p>
-                    <p>Original: {{ character.origin.name }}</p>
-                    <h1>{{response.data.results}}</h1>
-                </div>
-            </div>
-        </div>
+    <div class="card">
+      <div class="card-image">
+        
+      </div>
+      <div class="card-content">
+        <h3>{{event.title}}</h3>
+        <p>{{ event.description }}</p>
+        <p>{{event.date_hour}}</p>
+        <p>{{event.number_participants}}</p>
+      </div>
+      <div class="btn-zone">
+        <addButton
+        @click="emitAddEvent()"
+        />
+      </div>
     </div>
-</template>
+  </template>
+  
+  
+  <style scoped lang="scss">
+  .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image {
+    height: 25em;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  </style>
