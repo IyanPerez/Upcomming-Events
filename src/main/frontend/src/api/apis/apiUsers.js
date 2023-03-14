@@ -81,6 +81,22 @@ export default class apiUsers{
 
         return getResponse;
     }
+
+    async logOut(){
+        const response = axios.get(this.baseUrl + `/logout`,{
+            /* headers: {
+                'Authorization': `${document.cookie}`,
+            }, */
+            auth:{
+                username: 'user',
+                password: 'password'
+            }
+        });
+
+        const getResponse = await response;
+
+        console.log(getResponse.status);
+    }
     
     encoder(username, password){
         let encode = window.btoa(`${username}:${password}`)

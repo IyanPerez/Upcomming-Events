@@ -38,7 +38,8 @@ public class SecurityConfig {
                                 .formLogin(form -> form.disable())
                                 .logout(logout -> logout
                                                 .logoutUrl("/api/logout")
-                                                .deleteCookies("JSESSIONID"))
+                                                .deleteCookies("JSESSIONID")
+                                                .logoutSuccessUrl("/api/"))
                                 .authorizeRequests((auth) -> auth
                                                 .antMatchers("/api/register").permitAll()
                                                 .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")

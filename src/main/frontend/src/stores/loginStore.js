@@ -47,6 +47,13 @@ export const useLoginStore = defineStore('login', {
             this.roleLogin = response.data.role
 
             return response;
+        },
+        async logOut(){
+            const api = new Repository('users');
+            const apiUsers = api.chooseApi();
+
+            const response = await apiUsers.logOut();
+
         }
     },
 });
