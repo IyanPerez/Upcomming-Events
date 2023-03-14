@@ -5,6 +5,7 @@ import FeaturedEvents from "./components/FeaturedEvents.vue";
 import DetailsForm from "./components/DetailsForm.vue";
 import CardsComponent from "./components/CardsComponent.vue";
 import Buttons from "./components/Buttons.vue";
+import CreateEventView from "./views/CreateEventView.vue";
 </script>
 
 <template>
@@ -15,8 +16,7 @@ import Buttons from "./components/Buttons.vue";
   </main> -->
    <!-- <RouterView/>   -->
   <!-- <DashboardView /> -->
-  
-  <CardsComponent/>
+  <CreateEventView/>
 
 </template>
 
