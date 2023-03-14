@@ -6,17 +6,20 @@ const title = ref("");
 const date = ref("");
 const capacity = ref("");
 const description = ref(" ");
-
+const eventstore = eventsStore();
 
 
 function send(){
-  const events = {
+ 
+ const events = {
    title:title.value,
-   date:date.value,
-   capacity:capacity.value,
+   date_hour:date.value,
+   number_participants:capacity.value,
    description:description.value,
   };
-  eventsStore;
+  eventstore.savefEvents(events) 
+  console.log(events);
+  
 };
 
 

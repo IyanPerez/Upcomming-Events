@@ -27,4 +27,15 @@ export default class eventService{
 
         return getBody;
     }
+    async createEvent (event){
+        const resp = axios.post(this.baseUrl + '/events',event,{
+          auth:{
+            username: 'user',
+            password:'password'
+          }
+        });
+
+        const getEvent = (await resp);
+         return getEvent;
+    }
 }
