@@ -1,9 +1,11 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import EditEvent from './views/EditEvent.vue';
 </script>
 
 <template>
-   <RouterView/>  
+   <!-- <RouterView/>   -->
+   <EditEvent/>
 </template>
 
 <style lang="scss" scoped>

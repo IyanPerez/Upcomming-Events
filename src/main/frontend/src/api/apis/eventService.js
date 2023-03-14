@@ -35,4 +35,15 @@ export default class eventService{
         const getEvent = (await resp);
          return getEvent;
     }
+
+    async editEvent (event){
+        const resp = axios.put(this.baseUrl + '/events/1',event,{
+            auth:{
+                username:'user',
+                password:'password'
+            }
+        });
+        const ediEvent = (await resp);
+        return ediEvent;
+    }
 }
