@@ -1,5 +1,6 @@
 <script setup>
 import{ref}from"vue";
+import { eventsStore } from "../stores/eventsStore.js";
 
 const title = ref("");
 const date = ref("");
@@ -15,8 +16,9 @@ function send(){
    capacity:capacity.value,
    description:description.value,
   };
-  console.log(events);
+  eventsStore;
 };
+
 
 
 
