@@ -10,12 +10,7 @@ export default class apiUsers{
     }
 
     async acces(username, password){
-        /* const response = axios.get(this.baseUrl + "/login", {
-          auth: {
-            username: username,
-            password: password,
-          }
-        });   */  
+
         const response= await api.get('/login', {
             auth: {
               username: username,
@@ -50,16 +45,8 @@ export default class apiUsers{
     }
 
     async addUserToEvent(idUser, idEvent){
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{},
-        {
-            /* headers: {
-                'Authorization': `${document.cookie}`,
-            }, */
-            auth: {
-                username: 'user',
-                password: 'password'
-            }
-        });
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{});
 
         const getResponse = await response;
 
@@ -67,15 +54,8 @@ export default class apiUsers{
     }
     
     async  deleteUserToEvent(idUser, idEvent){
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/remove`,{
-            headers: {
-                'Authorization': `${document.cookie}`,
-            },
-            /* auth:{
-                username: 'user',
-                password: 'password'
-            } */
-        });
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/remove`,{});
 
         const getResponse = await response;
 
@@ -83,15 +63,8 @@ export default class apiUsers{
     }
 
     async logOut(){
-        const response = axios.get(this.baseUrl + `/logout`,{
-            /* headers: {
-                'Authorization': `${document.cookie}`,
-            }, */
-            auth:{
-                username: 'user',
-                password: 'password'
-            }
-        });
+        
+        const response = axios.get(this.baseUrl + `/logout`);
 
         const getResponse = await response;
 

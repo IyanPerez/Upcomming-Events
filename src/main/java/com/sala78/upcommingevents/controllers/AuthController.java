@@ -30,7 +30,7 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
     }
-    @GetMapping(value = "/")
+    /* @GetMapping(value = "/")
     public ResponseEntity<Map<String,String>> logOutRedirect(){
 
 
@@ -39,6 +39,6 @@ public class AuthController {
         
 
         return ResponseEntity.status(204).body(json);
-    }
+    } */
     
 }

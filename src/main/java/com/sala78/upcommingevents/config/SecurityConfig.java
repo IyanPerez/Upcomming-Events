@@ -38,8 +38,7 @@ public class SecurityConfig {
                                 .formLogin(form -> form.disable())
                                 .logout(logout -> logout
                                                 .logoutUrl("/api/logout")
-                                                .deleteCookies("JSESSIONID")
-                                                .logoutSuccessUrl("/api/"))
+                                                .deleteCookies("JSESSIONID"))
                                 .authorizeRequests((auth) -> auth
                                                 .antMatchers("/api/register").permitAll()
                                                 .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
@@ -52,7 +51,7 @@ public class SecurityConfig {
                                                 .authenticated())
                                 .userDetailsService(service)
                                 .sessionManagement(session -> session
-                                                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                                                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                                 .httpBasic(basic -> basic
                                                 .authenticationEntryPoint(authenticationEntryPoint))
                                 .httpBasic(Customizer.withDefaults());
