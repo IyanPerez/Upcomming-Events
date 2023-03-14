@@ -10,7 +10,7 @@ import DetailsForm from '../components/DetailsForm.vue';
     
 
     <div class="main">
-        <CardsComponent/>
+        <!-- <CardsComponent/> -->
         <DetailsForm/>
     </div>
 

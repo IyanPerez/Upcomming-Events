@@ -1,13 +1,18 @@
 <script setup>
-import { defineComponent } from "vue";
-import { onMounted } from "vue";
-import { eventStore } from "../stores/eventStoreTest";
-import { onBeforeMount } from "vue";
-import eventPayload from "../api/apis/payloads/eventPayload";
-import DetailsForm from "./DetailsForm.vue";
-import { ref } from "vue";
 
-const props = defineProps({
+import addButton from '../components/AddButton.vue'
+ const props = defineProps({
+    event:{
+        type: Object
+    }
+ })
+ const emits = defineEmits(['addEvent'])
+
+ const emitAddEvent = () => {
+  emits('addEvent', props.event.id)
+ }
+
+/* const props = defineProps({
   title: {
     type: String,
     required: true,
@@ -24,7 +29,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
-});
+}); */
+
+
+
 </script>
 
 <template>
@@ -33,25 +41,31 @@ const props = defineProps({
             <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <!-- <img src="../assets/img/card-img.png" alt="card-background"/> -->
           </div>
 
           <div class="card__description">
             <div id="icons">
-              <p class="card__date">{{ date }}12/12/1212</p>
+              <!-- <p class="card__date">{{ date }}12/12/1212</p> -->
+              <p class="card__date">{{event.date_hour}}12/12/1212</p>
               <div id="capacity">
                 <img
                   src="../assets/img/vector-people-cap.png"
                   alt="people-vector"
                   />
-                <p class="card__capacity">{{ capacity }}666</p>
+                <!-- <p class="card__capacity">{{ capacity }}666</p> -->
+                <p class="card__capacity">{{event.number_participants}}666</p>
+
               </div>
             </div>
             <div id="description">
-              <h3>{{ title }} Lorem ipsum dolor sit. </h3>
-              <p>{{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis </p>
-            </div>
+              <!-- <h3>{{ title }} Lorem ipsum dolor sit. </h3> -->
+              <h3>{{event.title}} Lorem ipsum dolor sit amet. </h3>
 
+              <!-- <p>{{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis </p> -->
+              <p>{{ event.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit est iste, nesciunt repudiandae consequuntur excepturi expedita nulla maiores nisi nostrum ullam qui officia quis omnis, earum iure, dolores explicabo sed? </p>
+
+            </div>
+            <addButton @click="emitAddEvent()"/>
           </div>
         </div>
 </template>
