@@ -16,9 +16,9 @@ const featureEvents = defineProps({
 <template>
   <div class="card">
     <h1 class="card__title">{{ title }}</h1>
-    <v-img class="card__img" :width="500" aspect-ratio="16/9" cover>
+    <div class="card__img">
       <img :src="img" alt="title-img" />
-    </v-img>
+    </div>
   </div>
 </template>
 <style lang="scss" scope>
@@ -29,20 +29,17 @@ const featureEvents = defineProps({
   .card__title {
     position: relative;
     left: 20px;
-    top:10vh;
+    top: 55px;
     z-index: 10;
     font-size: large;
     color: white;
-    
   }
   .card__img {
     width: 100%;
-
     img {
       object-fit: cover;
-      width: 90%;
-      height: 100px;
-
+      width: 100%;
+      height: 15vh;
       border-radius: 1rem;
     }
   }

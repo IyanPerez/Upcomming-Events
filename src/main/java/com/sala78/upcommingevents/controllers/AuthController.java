@@ -30,6 +30,15 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
     }
+    @GetMapping(value = "/")
+    public ResponseEntity<Map<String,String>> logOutRedirect(){
 
+
+        Map<String, String> json = new HashMap<>();
+        json.put("message","Logout");
+        
+
+        return ResponseEntity.status(204).body(json);
+    }
     
 }
