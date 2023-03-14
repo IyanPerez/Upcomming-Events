@@ -2,10 +2,9 @@
 import { eventStore } from '../stores/eventStoreTest';
 import { onBeforeMount } from 'vue';
 import CardsComponentTest from '../components/CardsComponentTest.vue';
-import { ref } from 'vue';
+import FeaturedEvents from '../components/FeaturedEvents.vue'
 
 const eventstore = eventStore();
-
 
 onBeforeMount(async() => {
 
@@ -13,23 +12,24 @@ onBeforeMount(async() => {
 
 })
 
-console.log(eventstore.events);
-
 const addUserToEvent=(id)=>{
   eventstore.addUserToEvent(1,id)
 }
-
 </script>
 
 <template>
   <main>
 
     <section class="highlighted-events">
-      <h1>highlighted-events</h1>
+      <h1>Highlighted-events</h1>
+      <div class="wrapper-highlighted-events">
+        <div class="container-highlighted-card">
+          <FeaturedEvents/>
+        </div>
+      </div>
     </section>
 
     <section class="all-events">
-
       <div class="container-cards" v-for="event of eventstore.events">
         <CardsComponentTest 
         :event="event" 
@@ -50,13 +50,23 @@ main{
   justify-content: space-evenly;
   .highlighted-events{
     width: 90%;
-    height: 30vh;
-    background-color: red;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .wrapper-highlighted-events{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .container-highlighted-card{
+        width: 100%;
+      }
+    }
   }
   .all-events{
     width: 90%;
     height: auto;
-    background-color: blueviolet;
     .container-cards{
       margin-top: 2vh;
     }
@@ -71,12 +81,10 @@ main{
     .highlighted-events{
     width: 45%;
     height: 90vh;
-    background-color: red;
     }
   .all-events{
     width: 50%;
     height: 90vh;
-    background-color: blueviolet;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
