@@ -1,9 +1,9 @@
 package com.sala78.upcommingevents.models;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -11,7 +11,7 @@ import javax.persistence.Lob;
 
 @Entity
 @Table(name = "image")
-public class Image {
+public class Image{
 
 
 	@Id
