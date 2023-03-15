@@ -4,7 +4,7 @@ import{ref}from"vue";
 const title = ref("");
 const date = ref("");
 const capacity = ref("");
-const description = ref(" ");
+const description = ref("");
 
 
 
@@ -18,9 +18,8 @@ function send(){
   console.log(events);
 };
 
-
-
 </script>
+
 <template>
   <div class="form-container">
     <div class="list-title">
@@ -50,10 +49,10 @@ function send(){
   </div>
 
    <div class="card__buttons mt-4">
-          <v-btn variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn
-          >
+          <v-btn variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn>
         </div>
 </template>
+
 <style lang="scss" scoped>
 .form-container {
   margin: 0 auto;

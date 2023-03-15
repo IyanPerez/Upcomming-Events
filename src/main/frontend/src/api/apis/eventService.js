@@ -11,10 +11,13 @@ export default class eventService{
     async getAllEVents(){    
             axios.defaults.withCredentials = 'include'; 
         const response = axios.get(this.baseUrl + '/events',{
-            headers: {
-                'Cookie': `${document.cookie}`,
-            },
-            
+            // headers: {
+            //     'Cookie': `${document.cookie}`,
+            // },
+            auth:{
+                username:'user',
+                password: 'password'
+            }
         });
 
 

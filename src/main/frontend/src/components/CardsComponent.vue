@@ -12,26 +12,6 @@ import addButton from '../components/AddButton.vue'
   emits('addEvent', props.event.id)
  }
 
-/* const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
-  },
-  capacity: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-}); */
-
-
 
 </script>
 
@@ -45,24 +25,20 @@ import addButton from '../components/AddButton.vue'
 
           <div class="card__description">
             <div id="icons">
-              <!-- <p class="card__date">{{ date }}12/12/1212</p> -->
-              <p class="card__date">{{event.date_hour}}12/12/1212</p>
+              <p class="card__date">{{event.date_hour}}</p>
               <div id="capacity">
                 <img
                   src="../assets/img/vector-people-cap.png"
                   alt="people-vector"
                   />
-                <!-- <p class="card__capacity">{{ capacity }}666</p> -->
-                <p class="card__capacity">{{event.number_participants}}666</p>
+                <p class="card__capacity">{{event.number_participants}}</p>
 
               </div>
             </div>
             <div id="description">
-              <!-- <h3>{{ title }} Lorem ipsum dolor sit. </h3> -->
-              <h3>{{event.title}} Lorem ipsum dolor sit amet. </h3>
+              <h3>{{event.title}} </h3>
 
-              <!-- <p>{{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis </p> -->
-              <p>{{ event.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit est iste, nesciunt repudiandae consequuntur excepturi expedita nulla maiores nisi nostrum ullam qui officia quis omnis, earum iure, dolores explicabo sed? </p>
+              <p>{{ event.description }} </p>
 
             </div>
             <addButton @click="emitAddEvent()"/>
