@@ -3,7 +3,6 @@ package com.sala78.upcommingevents.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,7 +34,8 @@ public class SecurityConfig {
                                 .and()
                                 .headers(header -> header.frameOptions().sameOrigin())
                                 .csrf(csrf -> csrf.disable())
-                                .formLogin(form -> form.disable())
+                                .formLogin(form -> form.loginPage("/api/login")
+                                .disable())
                                 .logout(logout -> logout
                                                 .logoutUrl("/api/logout")
                                                 .deleteCookies("JSESSIONID"))
@@ -47,14 +47,14 @@ public class SecurityConfig {
                                                 .antMatchers("/api/user").hasRole("USER")
                                                 .antMatchers("/api/users/**").hasRole("USER")
                                                 .antMatchers("/api/admin").hasRole("ADMIN")
+                                                .antMatchers("/api/login?logout").permitAll()
                                                 .anyRequest()
                                                 .authenticated())
                                 .userDetailsService(service)
                                 .sessionManagement(session -> session
                                                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                                 .httpBasic(basic -> basic
-                                                .authenticationEntryPoint(authenticationEntryPoint))
-                                .httpBasic(Customizer.withDefaults());
+                                                .authenticationEntryPoint(authenticationEntryPoint));
 
                 return http.build();
 

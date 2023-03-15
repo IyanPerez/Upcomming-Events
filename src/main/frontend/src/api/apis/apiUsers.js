@@ -10,13 +10,14 @@ export default class apiUsers{
     }
 
     async acces(username, password){
+        const auth = window.btoa(`${username}:${password}`).toString();
 
-        const response= await api.get('/login', {
-            auth: {
-              username: username,
-              password: password,
-            }
-          });
+    const response = await axios.get(`${this.baseUrl}/login`, {
+      headers: {
+        Authorization: `Basic ${auth}`
+      },
+      withCredentials: true
+    });
 
         const getBody = response;
 
@@ -63,7 +64,7 @@ export default class apiUsers{
     }
 
     async logOut(){
-        
+        axios.defaults.withCredentials = 'include'; 
         const response = axios.get(this.baseUrl + `/logout`);
 
         const getResponse = await response;
@@ -72,7 +73,7 @@ export default class apiUsers{
     }
     
     encoder(username, password){
-        let encode = window.btoa(`${username}:${password}`)
+        let encode = window.btoa(`${username}:${password}`).toString()
 
         return encode;
     }
