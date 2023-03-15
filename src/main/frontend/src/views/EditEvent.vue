@@ -2,21 +2,17 @@
 import DetailsForm from '../components/DetailsForm.vue';
 import { eventsStore } from '../stores/eventsStore';
 
-
-
-
 const edit = eventsStore();
 function Edit(){
  
- const eventsEdit = {
+ const eventsEdit = 
+  {
    title:"hola",
    date_hour:"12-12-1212",
    number_participants:12345,
    description:"holasdasdalsdhakshdkhaskdhkasdhakshdlahldlahsdlabcieibbajnwunakjvmcdkjg",
   };
-  edit.editEvents(eventsEdit)
-  console.log(eventsEdit);
-  
+  edit.editEvents(eventsEdit)  
 };
 
 </script>

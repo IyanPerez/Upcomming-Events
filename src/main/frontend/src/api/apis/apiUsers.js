@@ -45,18 +45,18 @@ export default class apiUsers{
         return getBody
     }
 
-    async addUserToEvent(idUser, idEvent){
+    async addUserToEvent(username, idEvent){
         axios.defaults.withCredentials = 'include'; 
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/add`,{});
+        const response = axios.put(this.baseUrl + `/users/${username}/events/${idEvent}/add`,{});
 
         const getResponse = await response;
 
         return getResponse;
     }
     
-    async  deleteUserToEvent(idUser, idEvent){
+    async  deleteUserToEvent(username, idEvent){
         axios.defaults.withCredentials = 'include'; 
-        const response = axios.put(this.baseUrl + `/users/${idUser}/events/${idEvent}/remove`,{});
+        const response = axios.put(this.baseUrl + `/users/${username}/events/${idEvent}/remove`,{});
 
         const getResponse = await response;
 
