@@ -4,8 +4,8 @@ import EditEvent from './views/EditEvent.vue';
 </script>
 
 <template>
-   <!-- <RouterView/>   -->
-   <EditEvent/>
+   <RouterView/>  
+   <!-- <EditEvent/> -->
 </template>
 
 <style lang="scss" scoped>

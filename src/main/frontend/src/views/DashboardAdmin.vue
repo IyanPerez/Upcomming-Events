@@ -1,19 +1,23 @@
 <script setup>
-import { eventStore  } from "../stores/eventStoreTest";
 import { onBeforeMount } from "vue";
-import CardsComponentTest from "../components/CardsComponentTest.vue";
 import FeatureEvents from "../components/FeaturedEvents.vue"
+import CardsComponent from "../components/CardsComponent.vue";
+import { eventsStore } from "../stores/eventsStore";
+import { eventUserStore } from "../stores/eventUserStore";
 
-const eventstore = eventStore();
+
+const eventuserstore = eventUserStore();
+const eventstore = eventsStore();
 
 onBeforeMount(async() => {
 
-    await eventstore.getAll();
+    await eventuserstore.getAll();
 
 })
 
-const addHighlighte =() =>{
-    
+const addHighlighte =(id) =>{
+    eventuserstore.addToHeighlightedEvents(id);
+
 }
 
 </script>
@@ -24,17 +28,17 @@ const addHighlighte =() =>{
         <section class="highlighte-events">
             <h1>Highlighte-events</h1>
             <div class="wrapper-highlighte-events">
-                <div class="container-highlighted-card">
-                  <FeaturedEvents/>
+                <div class="container-highlighted-card" v-for="event of eventuserstore.heighlightedEvents">
+                <FeatureEvents :event="event" />
                 </div>
             </div>
         </section>
 
         <section class="all-events">
-            <div class="container-cards" v-for="event of eventstore.events">
-            <CardsComponentTest
+            <div class="container-cards" v-for="event of eventuserstore.events">
+            <CardsComponent
             :event="event"
-            @add-event="addAdmin(event.id)"/>
+            @add-event="addHighlighte(event.id)"/>
             </div>
 
         </section>

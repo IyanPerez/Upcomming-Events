@@ -1,10 +1,10 @@
 <script setup>
-import { eventStore } from '../stores/eventStoreTest';
+import { eventUserStore } from '../stores/eventUserStore';
 import { onBeforeMount } from 'vue';
 import CardsComponentTest from '../components/CardsComponentTest.vue';
 import FeaturedEvents from '../components/FeaturedEvents.vue'
 
-const eventstore = eventStore();
+const eventstore = eventUserStore();
 
 onBeforeMount(async() => {
 
