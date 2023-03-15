@@ -6,12 +6,12 @@ const api = axios.create({
 
 api.interceptors.response.use(
   response => {
-          const sessionId = response.data.JSESSIONID
+          /* const sessionId = response.data.JSESSIONID
+ */
 
 
-
-          sessionStorage.setItem('JSESSIONID', sessionId);
-          document.cookie = `JSESSIONID=${sessionId}`
+          /* sessionStorage.setItem('JSESSIONID', sessionId);
+          document.cookie = `JSESSIONID=${sessionId}` */
 
     return response;
   },

@@ -1,12 +1,11 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import HeaderComponent from './components/header/HeaderComponent.vue';
-
+import EditEvent from './views/EditEvent.vue';
 </script>
 
 <template>
    <!-- <RouterView/>   -->
-   <HeaderComponent/>
+   <EditEvent/>
 </template>
 
 <style lang="scss" scoped>

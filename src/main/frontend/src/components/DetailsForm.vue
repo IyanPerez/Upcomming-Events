@@ -1,26 +1,29 @@
 <script setup>
 import{ref}from"vue";
+import { eventsStore } from "../stores/eventsStore.js";
 
 const title = ref("");
 const date = ref("");
 const capacity = ref("");
 const description = ref(" ");
-
+const eventstore = eventsStore();
 
 
 function send(){
-  const events = {
+ 
+ const events = {
    title:title.value,
-   date:date.value,
-   capacity:capacity.value,
+   date_hour:date.value,
+   number_participants:capacity.value,
    description:description.value,
   };
+  eventstore.savefEvents(events) 
   console.log(events);
+  
 };
 
-
-
 </script>
+
 <template>
   <div class="form-container">
     <div class="list-title">
@@ -50,10 +53,10 @@ function send(){
   </div>
 
    <div class="card__buttons mt-4">
-          <v-btn variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn
-          >
+          <v-btn variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn>
         </div>
 </template>
+
 <style lang="scss" scoped>
 .form-container {
   margin: 0 auto;

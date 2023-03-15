@@ -1,30 +1,19 @@
 <script setup>
-import { defineComponent } from "vue";
-import { onMounted } from "vue";
-import { eventStore } from "../stores/eventStoreTest";
-import { onBeforeMount } from "vue";
-import eventPayload from "../api/apis/payloads/eventPayload";
-import DetailsForm from "./DetailsForm.vue";
-import { ref } from "vue";
+import { defineProps } from "vue";
 
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
-  },
-  capacity: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-});
+import addButton from '../components/AddButton.vue'
+ const props = defineProps({
+    event:{
+        type: Object
+    }
+ })
+ const emits = defineEmits(['addEvent'])
+
+ const emitAddEvent = () => {
+  emits('addEvent', props.event.id)
+ }
+
+
 </script>
 
 <template>
@@ -33,38 +22,39 @@ const props = defineProps({
             <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
-            <!-- <img src="../assets/img/card-img.png" alt="card-background"/> -->
           </div>
 
           <div class="card__description">
             <div id="icons">
-              <p class="card__date">{{ date }}12/12/1212</p>
+              <p class="card__date">{{event.date_hour}}</p>
               <div id="capacity">
                 <img
                   src="../assets/img/vector-people-cap.png"
                   alt="people-vector"
                   />
-                <p class="card__capacity">{{ capacity }}666</p>
+                <p class="card__capacity">{{event.number_participants}}</p>
+
               </div>
             </div>
             <div id="description">
-              <h3>{{ title }} Lorem ipsum dolor sit. </h3>
-              <p>{{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum exercitationem sunt illum architecto, deleniti quis repellat officiis nobis </p>
-            </div>
+              <h3>{{event.title}} </h3>
 
+              <p>{{ event.description }} </p>
+
+            </div>
+            <addButton @click="emitAddEvent()"/>
           </div>
         </div>
 </template>
 
 <style scoped lang="scss">
-
-.card{
+.card {
   width: 480px;
   background-color: rgb(217, 217, 217);
   border-radius: 3vw;
   overflow: hidden;
 
-  &__image{
+  &__image {
     height: 280px;
     width: 480px;
     display: flex;
@@ -72,20 +62,20 @@ const props = defineProps({
     background-image: url("../assets/img/card-img.png");
     background-size: contain;
 
-    #edit__icon{
+    #edit__icon {
       margin: 4%;
     }
   }
-  &__description{
+  &__description {
     display: flex;
     gap: 5%;
     padding: 3%;
-    
-    #icons{
+
+    #icons {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      #capacity{
+      #capacity {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -93,7 +83,7 @@ const props = defineProps({
       }
     }
 
-    #description{
+    #description {
       display: flex;
       flex-direction: column;
       gap: 1vh;
@@ -101,21 +91,6 @@ const props = defineProps({
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* h1 {
   position: relative;
@@ -177,7 +152,4 @@ const props = defineProps({
     }
   }
 } */
-
-
-
 </style>
