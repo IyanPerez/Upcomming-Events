@@ -1,4 +1,5 @@
 <script setup>
+import { defineProps } from "vue";
 
 import addButton from '../components/AddButton.vue'
  const props = defineProps({
@@ -47,14 +48,13 @@ import addButton from '../components/AddButton.vue'
 </template>
 
 <style scoped lang="scss">
-
-.card{
+.card {
   width: 480px;
   background-color: rgb(217, 217, 217);
   border-radius: 3vw;
   overflow: hidden;
 
-  &__image{
+  &__image {
     height: 280px;
     width: 480px;
     display: flex;
@@ -62,20 +62,20 @@ import addButton from '../components/AddButton.vue'
     background-image: url("../assets/img/card-img.png");
     background-size: contain;
 
-    #edit__icon{
+    #edit__icon {
       margin: 4%;
     }
   }
-  &__description{
+  &__description {
     display: flex;
     gap: 5%;
     padding: 3%;
-    
-    #icons{
+
+    #icons {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      #capacity{
+      #capacity {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -83,7 +83,7 @@ import addButton from '../components/AddButton.vue'
       }
     }
 
-    #description{
+    #description {
       display: flex;
       flex-direction: column;
       gap: 1vh;
@@ -91,21 +91,6 @@ import addButton from '../components/AddButton.vue'
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* h1 {
   position: relative;
@@ -167,7 +152,4 @@ import addButton from '../components/AddButton.vue'
     }
   }
 } */
-
-
-
 </style>
