@@ -1,23 +1,20 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
 
-const featureEvents = defineProps({
-  title: {
-    type: String,
-    default: "evento prueba",
-  },
-
-  img: {
-    type: String,
-    default: "../../src/assets/img/Login-background.png",
-  },
+const props = defineProps({
+  event: {
+    type: Object,
+    
+  }
 });
+
+
 </script>
 <template>
   <div class="card">
-    <h1 class="card__title">{{ title }}</h1>
+    <h1 class="card__title">{{ event.title }}</h1>
     <div class="card__img">
-      <img :src="img" alt="title-img" />
+      <img :src= "'../../src/assets/img/Login-background.png'" alt="title-img" />
     </div>
   </div>
 </template>

@@ -23,16 +23,33 @@ const router = createRouter({
           children: [
             {
               path: "dashboard",
-              name: "dashboard",
-              component: ()=> import("../views/DashboardView.vue")
+              name: "dashboardUser",
+              component: () => import("../views/DashboardUser.vue")
             },
             {
               path: "details",
-              name: "details",
-              component: ()=> import("../views/UserDetails.vue")
+              name: "detailsUser",
+              component: () => import("../views/UserDetails.vue")
             }
           ],
         },
+        {
+          path: "admin",
+          name: "admin",
+          component: () => import("../layouts/AdminLayout.vue"),
+          children: [
+            {
+              path: "dashboard",
+              name: "dashboardAdmin",
+              component: () => import("../views/DashboardAdmin.vue")
+            },
+            {
+              path: "details",
+              name: "detailsAdmin",
+              component: () => import("../views/UserDetails.vue")
+            }
+          ],
+        }
       ],
     },
   ],
@@ -41,6 +58,7 @@ router.beforeEach((to, from) => {
   const store = useLoginStore();
 
   if(to.meta.requiresAuth && !store.isAuthenticate) return {name: 'home'}
-  if(to.name == 'sessionLayout' && store.roleLogin == 'ROLE_USER') router.push({name:'dashboard'})
+  if(to.name == 'sessionLayout' && store.roleLogin == 'ROLE_USER') router.push({name:'dashboardUser'})
+  if(to.name == 'sessionLayout' && store.roleLogin == 'ROLE_ADMIN') router.push({name:'dashboardAdmin'})
 })
 export default router

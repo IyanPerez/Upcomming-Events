@@ -11,16 +11,33 @@ const logOut = async ()=>{
 </script>
 <template>
     <header>
-        <nav>
-            <ul>
-                <li>Create Event</li>
-                <li>Home</li>
-                <li @click="logOut()">Logout</li>
-            </ul>
+        <nav class="nav-bar">
+            
+                <p>Create Event</p>
+                <p>Home</p>
+                <p @click="logOut()">Logout</p>
+        
         </nav>
         <h1>Buy Amazing Tickets at wholesale prices</h1>
+        
     </header>
 </template>
 <style lang="scss" scoped>
+
+header{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../assets/img/banner-img.png");
+   background-size: 100%;
+
+    .nav-bar{
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
     
 </style>
