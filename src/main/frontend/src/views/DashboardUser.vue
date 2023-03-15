@@ -1,10 +1,12 @@
 <script setup>
 import { eventUserStore } from '../stores/eventUserStore';
 import { onBeforeMount } from 'vue';
-import CardsComponentTest from '../components/CardsComponentTest.vue';
-import FeaturedEvents from '../components/FeaturedEvents.vue'
+import FeaturedEvents from '../components/FeaturedEvents.vue';
+import CardsComponent from '../components/CardsComponent.vue';
+import {useLoginStore} from '../stores/loginStore'
 
 const eventstore = eventUserStore();
+const loginstore = useLoginStore();
 
 onBeforeMount(async() => {
 
@@ -13,7 +15,7 @@ onBeforeMount(async() => {
 })
 
 const addUserToEvent=(id)=>{
-  eventstore.addUserToEvent(1,id)
+  eventstore.addUserToEvent(loginstore.username, id)
 }
 </script>
 
@@ -23,15 +25,17 @@ const addUserToEvent=(id)=>{
     <section class="highlighted-events">
       <h1>Highlighted-events</h1>
       <div class="wrapper-highlighted-events">
-        <div class="container-highlighted-card">
-          <FeaturedEvents/>
+        <div class="container-highlighted-card" v-for="event of eventstore.heighlightedEvents">
+          <FeaturedEvents
+          :event="event"
+          />
         </div>
       </div>
     </section>
 
     <section class="all-events">
       <div class="container-cards" v-for="event of eventstore.events">
-        <CardsComponentTest 
+        <CardsComponent
         :event="event" 
         @add-event="addUserToEvent(event.id)"/>
       </div> 

@@ -11,6 +11,7 @@ export const useLoginStore = defineStore('login', {
         statusLogin: 0,
         roleLogin: '',
         isAuthenticate: false,
+        username: ''
     }),
 
     actions: {
@@ -28,6 +29,7 @@ export const useLoginStore = defineStore('login', {
 
             this.statusLogin = response.status
             this.roleLogin = response.data.role
+            this.username = response.data.username
             
             if(response.status == 202) this.isAuthenticate = true;
 

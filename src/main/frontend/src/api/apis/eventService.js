@@ -21,23 +21,17 @@ export default class eventService{
         return getBody;
     }
     async createEvent (event){
+        axios.defaults.withCredentials = 'include'; 
         const resp = axios.post(this.baseUrl + '/events',event,{
-          auth:{
-            username: 'user',
-            password:'password'
-          }
         });
 
         const getEvent = (await resp);
-         return getEvent;
+        return getEvent;
     }
 
     async editEvent (event){
+        axios.defaults.withCredentials = 'include'; 
         const resp = axios.put(this.baseUrl + '/events/1',event,{
-            auth:{
-                username:'user',
-                password:'password'
-            }
         });
         const ediEvent = (await resp);
         return ediEvent;

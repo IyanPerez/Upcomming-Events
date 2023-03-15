@@ -7,32 +7,20 @@ import axios from 'axios';
 
 const useloginstore = useLoginStore();
 
-const showInfo = computed(()=>{
-    return (useloginstore.statusLogin == 202) ? 'show' : 'hidden';
-})
 
-axios.get('http://localhost:8080/api/events',{auth:{username:useloginstore.login.username, password:useloginstore.login.password}})
+
+    
 
 </script>
 
 <template>
-<CardsComponent /> <DetailsForm />
-
-<h1 :class="showInfo">hola usuario logged</h1>
-<CardsComponent />
-        
-    <button @click="showInfo"></button> 
+ <DetailsForm 
+ :view="'edit'"
+ />
 </template>
 
 
 
 <style lang="scss" scoped>
 
-.show{
-    background-color:#ECE5E5;
-    visibility: visible;
-}
-.hidden{
-    visibility: hidden;
-}
 </style>

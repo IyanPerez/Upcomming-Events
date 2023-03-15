@@ -19,12 +19,12 @@ export const eventUserStore = defineStore("event", {
 
       return eventsDB.data;
     },
-    async addUserToEvent(idUser, idEvent) {
+    async addUserToEvent(username, idEvent) {
       const api = new Repository("users");
 
       const eventService = api.chooseApi();
 
-      const eventsDB = await eventService.addUserToEvent(idUser, idEvent);
+      const eventsDB = await eventService.addUserToEvent(username, idEvent);
 
       console.log(eventsDB.status);
     },
