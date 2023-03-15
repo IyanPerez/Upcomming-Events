@@ -24,15 +24,32 @@ const router = createRouter({
             {
               path: "dashboard",
               name: "dashboard",
-              component: ()=> import("../views/DashboardView.vue")
+              component: () => import("../views/DashboardUser.vue")
             },
             {
               path: "details",
               name: "details",
-              component: ()=> import("../views/UserDetails.vue")
+              component: () => import("../views/UserDetails.vue")
             }
           ],
         },
+        {
+          path: "admin",
+          name: "admin",
+          component: () => import("../layouts/AdminLayout.vue"),
+          children: [
+            {
+              path: "dashboard",
+              name: "dashboard",
+              component: () => import("../views/DashboardAdmin.vue")
+            },
+            {
+              path: "details",
+              name: "details",
+              component: () => import("../views/UserDetails.vue")
+            }
+          ],
+        }
       ],
     },
   ],

@@ -82,14 +82,14 @@ main{
     width: 45%;
     height: 90vh;
     }
-  .all-events{
-    width: 50%;
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+      .all-events{
+        width: 50%;
+        height: 90vh;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
     .container-cards{
       width: 45%;
       height: 45%;
