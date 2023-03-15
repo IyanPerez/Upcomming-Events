@@ -1,41 +1,50 @@
 <script setup>
 import { defineProps } from "vue";
 
-const props = defineProps({
-  event:{
-    type:Object,
-  }
-});
+import addButton from '../components/AddButton.vue'
+ const props = defineProps({
+    event:{
+        type: Object
+    }
+ })
+ const emits = defineEmits(['addEvent'])
+
+ const emitAddEvent = () => {
+  emits('addEvent', props.event.id)
+ }
+
+
 </script>
 
 <template>
-  <div class="card">
-    <div class="card__image">
-      <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
-      <!-- <img src="../assets/img/card-img.png" alt="card-background"/> -->
-    </div>
+        <div class="card">
+          <div class="card__image">
+            <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+          </div>
 
-    <div class="card__description">
-      <div id="icons">
-        <p class="card__date">{{ date }}12/12/1212</p>
-        <div id="capacity">
-          <img src="../assets/img/vector-people-cap.png" alt="people-vector" />
-          <p class="card__capacity">{{ capacity }}666</p>
+          <div class="card__description">
+            <div id="icons">
+              <p class="card__date">{{event.date_hour}}</p>
+              <div id="capacity">
+                <img
+                  src="../assets/img/vector-people-cap.png"
+                  alt="people-vector"
+                  />
+                <p class="card__capacity">{{event.number_participants}}</p>
+
+              </div>
+            </div>
+            <div id="description">
+              <h3>{{event.title}} </h3>
+
+              <p>{{ event.description }} </p>
+
+            </div>
+            <addButton @click="emitAddEvent()"/>
+          </div>
         </div>
-      </div>
-      <div id="description">
-        <h3>{{ title }} Lorem ipsum dolor sit.</h3>
-        <p>
-          {{ description }} Lorem ipsum dolor sit amet conse ducimus nobis sint
-          veniam doloribus odit. Alias voluptas est eius? Dolore a ipsum
-          exercitationem sunt illum architecto, deleniti quis repellat officiis
-          nobis
-        </p>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped lang="scss">
