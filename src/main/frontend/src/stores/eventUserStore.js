@@ -31,11 +31,10 @@ export const eventUserStore = defineStore("event", {
     addToHeighlightedEvents(id){
         if (this.existHeighlightedEvents(id)) {
 
-        const findEvent = this.heighlightedEvents.find(event => event.id == id)    
+        const findEvent = this.heighlightedEvents.find(event => event.id == id)   
 
         const index = this.heighlightedEvents.indexOf(findEvent)
         this.heighlightedEvents.splice(index, 1)
-        console.log(this.heighlightedEvents);
         return 
         
         }
@@ -45,7 +44,7 @@ export const eventUserStore = defineStore("event", {
               this.heighlightedEvents.push(event); 
             }
         }
-        console.log(this.heighlightedEvents);
+
     },
     existHeighlightedEvents(id){
         for (const event of this.heighlightedEvents) {
