@@ -40,8 +40,18 @@ export const eventsStore = defineStore("featuresEvents", {
       console.log(response.status);
 
       this.oneEvent = response.data
-    }
+    },
 
+    async deleteEvent(id){
+      const api = new Repository("events");
+
+      const eventService = api.chooseApi();
+
+      const response =eventService.deleteEvent(id);
+
+      console.log(response.status);
+      return response.status
+    }
     
   },
 });

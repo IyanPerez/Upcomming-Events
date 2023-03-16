@@ -56,6 +56,12 @@ export const useLoginStore = defineStore('login', {
 
             const response = await apiUsers.logOut();
 
+        },
+        async cleanLoginSession(){
+            this.statusLogin = 0
+            this.roleLogin = ''
+            this.isAuthenticate = false
+            this.username = ''
         }
     },
 });

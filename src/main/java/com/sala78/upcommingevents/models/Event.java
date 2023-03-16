@@ -31,6 +31,9 @@ public class Event {
     @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
+    private Integer actual_participants;
+
     @OneToOne
     private Image image;
 
@@ -43,6 +46,7 @@ public class Event {
         this.date_hour = date_hour;
         this.number_participants = number_participants;
         this.description = description;
+        this.actual_participants = 0;
     }
 
     public Image getImage() {
@@ -93,4 +97,15 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Integer getActual_participants() {
+        return actual_participants;
+    }
+
+    public void incrementActual_participants() {
+
+        if(this.number_participants > this.actual_participants) this.actual_participants++;
+        
+    }
+    
 }
