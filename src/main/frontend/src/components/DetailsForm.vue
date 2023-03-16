@@ -85,7 +85,7 @@ const disable = computed(()=>{
 <style lang="scss" scoped>
 .form-container {
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
