@@ -7,16 +7,41 @@ import axios from 'axios';
 
 const useloginstore = useLoginStore();
 
+const eventTemporal ={
+    title: 'hola',
+    date_hour: '10-10-2020',
+    number_participants: 20,
+    description: 'esto es un descripcion'
+}
+
 </script>
 
 <template>
- <DetailsForm 
- :view="'edit'"
- />
+<div class="container">
+    <CardsComponent
+    :event="eventTemporal"
+    />
+    <DetailsForm 
+    :view="'edit'"
+    />
+</div>
 </template>
 
 
 
 <style lang="scss" scoped>
+.container{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+@media (min-width: 1024px) {
+    .container{
+        flex-direction: row;
+        justify-content: center;
+        margin-block: 4%;
+    }
+}
+
 
 </style>

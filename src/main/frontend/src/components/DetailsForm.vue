@@ -74,8 +74,10 @@ const disable = computed(()=>{
 
     <textarea :disabled="disable" class="textarea-info" v-model="description"></textarea>
     <div class="card__buttons mt-4">
-          <v-btn v-if="view == 'create' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="success" class="mr-2" v-on:click="send()">SUBMIT</v-btn>
-          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="warning" class="mr-2" v-on:click="edit()">SUBMIT</v-btn>
+          <v-btn v-if="view == 'create' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="success" class="button mr-2" v-on:click="send()">SUBMIT</v-btn>
+          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="warning" class="button mr-2" v-on:click="edit()">EDIT</v-btn>
+          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="red" class="button mr-2" v-on:click="edit()">DELETE</v-btn>
+          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="blue" class="button mr-2" v-on:click="edit()">ADD TO SLIDER</v-btn>
     </div>
   </div>
 
@@ -85,7 +87,6 @@ const disable = computed(()=>{
 <style lang="scss" scoped>
 .form-container {
   width: 100%;
-  // margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,13 +105,15 @@ const disable = computed(()=>{
     border-radius: 10px;
   }
   .card__buttons{
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
+  }
+  .button{
+    width: 30%;
   }
 }
 @media (min-width: 1024px){
