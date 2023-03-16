@@ -19,9 +19,7 @@ const password = ref("")
 
 const submit = async () => {
 
-  username.value.length && password.value.length > 4 ? useloginstore.saveLogin(username.value, password.value) : console.log("No guarda datos");
-
-  username.value.length || password.value.length < 8 ? alert("Fields must contain at least 8 characters"):null;
+  username.value.length || password.value.length < 4 ? alert("Fields must contain at least 8 characters"):null;
 
   let test = await useloginstore.loginSession(username.value, password.value);
   

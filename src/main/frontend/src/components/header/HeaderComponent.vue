@@ -3,10 +3,12 @@ import { useRouter } from 'vue-router';
 import { useLoginStore } from '../../stores/loginStore';
 
 const loginstore = useLoginStore();
+const router = useRouter()
 
 const logOut = async ()=>{
-
-    loginstore.logOut()
+    loginstore.logOut();
+    loginstore.cleanLoginSession();
+    router.push({name:'home'});
 }
 </script>
 <template>
