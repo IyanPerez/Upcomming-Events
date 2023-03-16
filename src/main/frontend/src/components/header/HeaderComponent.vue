@@ -3,24 +3,19 @@ import { useRouter } from "vue-router";
 import { useLoginStore } from "../../stores/loginStore";
 
 const loginstore = useLoginStore();
-<<<<<<< HEAD
 const router = useRouter();
-const logOut = async () => {
-  loginstore.logOut();
-};
+
 
 const redi = () => {
   router.push({ name: "sessionLayout" });
 };
-=======
-const router = useRouter()
+
 
 const logOut = async ()=>{
     loginstore.logOut();
     loginstore.cleanLoginSession();
     router.push({name:'home'});
 }
->>>>>>> 6b2e0c3d8b3a62c79be437351b0d9fe9dcedc408
 </script>
 <template>
   <header>
