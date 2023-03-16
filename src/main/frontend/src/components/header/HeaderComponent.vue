@@ -24,7 +24,7 @@ const logOut = async ()=>{
 <template>
   <header>
     <nav class="nav-bar">
-      <p @click="createEvent()" v-if="loginstore.roleLogin=='ROLE_ADMIN'"  >Create Event</p>
+      <p @click="createEvents()" v-if="loginstore.roleLogin=='ROLE_ADMIN'"  >Create Event</p>
       <p @click="redi()" >Home</p>
       <p @click="logOut()">Logout</p>
     </nav>
