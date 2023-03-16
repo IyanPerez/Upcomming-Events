@@ -41,7 +41,7 @@ const eventTemporal ={
 @media (min-width: 1024px) {
     .container{
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         margin-block: 4%;
     }
 }
