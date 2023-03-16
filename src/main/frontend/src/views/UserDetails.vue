@@ -46,6 +46,7 @@ const eventTemporal ={
     flex-direction: column;
     display: flex;
     align-items: center;
+    height: 54vh;
 }
 .card{
     width: 80%;

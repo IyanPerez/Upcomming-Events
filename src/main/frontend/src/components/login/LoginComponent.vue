@@ -19,8 +19,6 @@ const password = ref("")
 
 const submit = async () => {
 
-  username.value.length || password.value.length < 4 ? alert("Fields must contain at least 8 characters"):null;
-
   let test = await useloginstore.loginSession(username.value, password.value);
   
   if(test.status==202)router.push({name:'sessionLayout'});

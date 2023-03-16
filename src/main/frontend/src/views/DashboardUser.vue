@@ -39,7 +39,7 @@ const shotDetails=(id) =>{
 <template>
   <main>
 
-    <section class="highlighted-events">
+    <section>
       <h1>Highlighted-events</h1>
       <div class="wrapper-highlighted-events">
         <div class="container-highlighted-card" v-for="event of eventstore.heighlightedEvents">
@@ -69,14 +69,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
 
-    .highlighted-events{
-        width: 90%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         .wrapper-highlighted-events{
             width: 100%;
             display: flex;
@@ -95,16 +88,15 @@ main{
             margin-top: 2vh;
         }
     }
-}
+
 
 @media (min-width: 1024px) {
     main{
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-around;
-        .highlighted-events{
-            width: 50%;
-            height: 90vh;
+        margin-bottom: 2vh;
+            
         }
             .all-events{
               width: 50%;
@@ -119,5 +111,5 @@ main{
                 width: 22vw;
             }
         }
-    }
+    
 </style>

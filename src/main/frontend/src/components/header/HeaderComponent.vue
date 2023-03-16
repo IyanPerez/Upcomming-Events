@@ -11,7 +11,7 @@ const redi = () => {
 };
 
 const createEvents = () => {
-  router.push({ name: "createEvents" });
+  router.push({ name: "createEvent" });
 }
 
 

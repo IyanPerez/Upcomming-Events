@@ -7,7 +7,7 @@ import { useRouter} from "vue-router";
 
         <footer class="footer">
     <div class="footer__container-social-media">
-        <p class="footer__container-social-media__copyright">©Copyright 2023</p>
+        <p class="footer__container-social-media__copyright">Upcomming Events ©Copyright 2023</p>
     </div>
 </footer>
 
