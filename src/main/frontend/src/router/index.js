@@ -30,6 +30,11 @@ const router = createRouter({
               path: "details",
               name: "detailsUser",
               component: () => import("../views/UserDetails.vue")
+            },
+            {
+              path: "events",
+              name: "user",
+              component: () => import("../views/UserEventsView.vue")
             }
           ],
         },
@@ -43,11 +48,7 @@ const router = createRouter({
               name: "dashboardAdmin",
               component: () => import("../views/DashboardAdmin.vue")
             },
-            {
-              path: "details",
-              name: "detailsAdmin",
-              component: () => import("../views/AdminDetailsView.vue")
-            }
+          
           ],
         }
       ],
