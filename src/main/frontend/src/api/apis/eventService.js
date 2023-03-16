@@ -20,6 +20,17 @@ export default class eventService{
 
         return getBody;
     }
+    async getOneEvent(idEvent){
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.get(this.baseUrl + `/events/${idEvent}`,{
+
+        });
+
+        const getBody = (await response);
+
+
+        return getBody;
+    }
     async createEvent (event){
         axios.defaults.withCredentials = 'include'; 
         const resp = axios.post(this.baseUrl + '/events',event,{

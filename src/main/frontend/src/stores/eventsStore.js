@@ -6,6 +6,7 @@ export const eventsStore = defineStore("featuresEvents", {
   state: () => ({
     fevents: [],
     events: [],
+    oneEvent:[]
   }),
 
   actions: {
@@ -28,6 +29,18 @@ export const eventsStore = defineStore("featuresEvents", {
 
       console.log(response.status);
     },
+
+    async getOneEvent(id){
+      const api = new Repository("events");
+
+      const eventService = api.chooseApi();
+
+      const response = await eventService.getOneEvent(id);
+
+      console.log(response.status);
+
+      this.oneEvent = response.data
+    }
 
     
   },
