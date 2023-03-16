@@ -23,7 +23,7 @@ const addHighlighte =(id) =>{
 }
 
 const shotDetails=(id) =>{
-    router.push({name: 'detailsUser', params:{id:id}, props:{id:id}})
+    router.push({name: 'detailsAdmin', params:{id:id}, props:{id:id}})
 }
 
 </script>

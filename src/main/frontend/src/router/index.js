@@ -45,9 +45,10 @@ const router = createRouter({
               component: () => import("../views/DashboardAdmin.vue")
             },
             {
-              path: "details",
+              path: "details/:id",
               name: "detailsAdmin",
-              component: () => import("../views/AdminDetailsView.vue")
+              component: () => import("../views/AdminDetailsView.vue"),
+              props:route => ({ id: parseInt(route.params.id) })
             }
           ],
         }

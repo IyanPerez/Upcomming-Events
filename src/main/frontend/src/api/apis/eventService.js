@@ -40,9 +40,9 @@ export default class eventService{
         return getEvent;
     }
 
-    async editEvent (event){
+    async editEvent (event,idEvent){
         axios.defaults.withCredentials = 'include'; 
-        const resp = axios.put(this.baseUrl + '/events/1',event,{
+        const resp = axios.put(this.baseUrl + `/events/${idEvent}`,event,{
         });
         const ediEvent = (await resp);
         return ediEvent;
