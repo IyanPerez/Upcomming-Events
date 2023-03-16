@@ -3,8 +3,9 @@ import { eventUserStore } from '../stores/eventUserStore';
 import { onBeforeMount } from 'vue';
 import FeaturedEvents from '../components/FeaturedEvents.vue';
 import CardsComponent from '../components/CardsComponent.vue';
-import {useLoginStore} from '../stores/loginStore'
-import {useRouter} from 'vue-router'
+import {useLoginStore} from '../stores/loginStore';
+import {useRouter} from 'vue-router';
+import { ref } from 'vue';
 
 const eventstore = eventUserStore();
 const loginstore = useLoginStore();
@@ -16,8 +17,18 @@ onBeforeMount(async() => {
 
 })
 
-const addUserToEvent=(id)=>{
-  eventstore.addUserToEvent(loginstore.username, id)
+const addUserToEvent = async (id)=>{
+
+
+  const json = await eventstore.incrementEvent(id)
+  
+  if(json.participants > json.actual){
+
+    eventstore.addUserToEvent(loginstore.username, id);
+    
+  }
+  
+  
 }
 
 const shotDetails=(id) =>{
