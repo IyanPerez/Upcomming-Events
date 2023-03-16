@@ -1,42 +1,69 @@
 package com.sala78.upcommingevents.models;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Lob;
 
-@Entity @Table(name = "images")
-public class Image {
+@Entity
+@Table(name = "image")
+public class Image{
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_image")
-    private Long id_image;
-    
-    @Column(nullable = false)
-    private String url;
-    
-    public Image() {}
 
-    public Image(Long id_image, String url) {
-        this.id_image = id_image;
-        this.url = url;
-    }
+	@Id
+  @GeneratedValue(generator = "uuid")
+  @GenericGenerator(name = "uuid", strategy = "uuid2")
+  private String id;
 
-    public Long getId_image() {
-        return id_image;
-    }
+  private String name;
 
-    public void setId_image(Long id_image) {
-        this.id_image = id_image;
-    }
+  private String type;
 
-    public String getUrl() {
-        return url;
-    }
+  @Lob
+  private byte[] data;
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+  public Image() {
+  }
+
+  public Image(String name, String type, byte[] data) {
+    this.name = name;
+    this.type = type;
+    this.data = data;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public byte[] getData() {
+    return data;
+  }
+
+  public void setData(byte[] data) {
+    this.data = data;
+  }
 
 }
+
+
+
