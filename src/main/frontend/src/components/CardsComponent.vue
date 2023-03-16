@@ -17,8 +17,7 @@ const emitAddEvent = () => {
 </script>
 <template>
   <v-card 
-    class="mx-auto "
-    max-width="100%"
+    class="card mx-auto "
   >
     <v-img
       class="align-end text-white"
@@ -26,21 +25,17 @@ const emitAddEvent = () => {
       src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       cover
     >
-      <v-card-title> <h3>{{ event.title }} </h3></v-card-title>
+      <v-card-title class="title"> <h3>{{ event.title }} </h3></v-card-title>
     </v-img>
 
-    <v-card-subtitle class="pt-4 d-flex justify-space-between">
-      <p class="card__date">{{ event.date_hour }}</p>
-      <div id="capacity">
-        <v-icon>mdiAccount</v-icon>
-          <p class="card__capacity">Max.{{ event.number_participants }}</p>
-
-        </div>
+    <v-card-subtitle class="subtitle pt-4 d-flex justify-space-between">
+      <p class="card__date">{{ event.date_hour }}</p>    
+      <p class="card__capacity">&#128100 Max.{{ event.number_participants }}</p>
     </v-card-subtitle>
 
-    <v-card-text>
+    <v-card-text class="text">
       <h3>{{ event.title }} </h3>
-<p>{{ event.description }} </p>
+      <p>{{ event.description }} </p>
       
     </v-card-text>
 
@@ -55,78 +50,18 @@ const emitAddEvent = () => {
 </template>
 
 
-<!-- <template>
-  <div class="card">
-    <div class="card__image">
-      <v-btn id="edit__icon" variant="outlined" size="large" icon color="white">
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
-    </div>
-
-    <div class="card__description">
-      <div id="icons">
-        <p class="card__date">{{ event.date_hour }}</p>
-        <div id="capacity">
-          <img src="../assets/img/vector-people-cap.png" alt="people-vector" />
-          <p class="card__capacity">{{ event.number_participants }}</p>
-
-        </div>
-      </div>
-      <div id="description">
-        <h3>{{ event.title }} </h3>
-
-        <p>{{ event.description }} </p>
-
-      </div>
-      <addButton @click="emitAddEvent()" />
-    </div>
-  </div>
-</template> -->
-
 <style scoped lang="scss">
-.card {
-  width: 480px;
-  background-color: rgb(217, 217, 217);
-  border-radius: 3vw;
-  overflow: hidden;
 
-  &__image {
-    height: 280px;
-    width: 480px;
-    display: flex;
-    flex-direction: column;
-    background-image: url("../assets/img/card-img.png");
-    background-size: contain;
-
-    #edit__icon {
-      margin: 4%;
-    }
-  }
-
-  &__description {
-    display: flex;
-    gap: 5%;
-    padding: 3%;
-
-    #icons {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-
-      #capacity {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+   @media (max-width: 1024px){
+    .title{
+        font-size: 11px;
       }
+    .subtitle{
+      font-size: 9px;
     }
-
-    #description {
-      display: flex;
-      flex-direction: column;
-      gap: 1vh;
-      width: 100%;
+    .text{
+      font-size: 8px;
     }
   }
-}
+
 </style>

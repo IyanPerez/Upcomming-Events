@@ -89,7 +89,7 @@ const disable = computed(()=>{
 
 <style lang="scss" scoped>
 .form-container {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,7 +121,7 @@ const disable = computed(()=>{
 }
 @media (min-width: 1024px){
   .form-container{
-    width: 50%;
+    width: 60%;
   }
 }
 </style>

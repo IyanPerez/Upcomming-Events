@@ -47,11 +47,23 @@ const eventTemporal ={
     display: flex;
     align-items: center;
 }
+.card{
+    width: 80%;
+}
+.details{
+    width: 95%;
+}
 @media (min-width: 1024px) {
     .container{
         flex-direction: row;
         justify-content: center;
         margin-block: 4%;
+    }
+    .card{
+    width: 30%;
+    }
+    .details{
+        width: 50%;
     }
 }
 

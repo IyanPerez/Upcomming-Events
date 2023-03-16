@@ -15,7 +15,7 @@ import { useRouter} from "vue-router";
 
 <style lang="scss" scoped>
 .footer__container-social-media{
-  background-image: url("../../assets/img/Rectangle-footer.png");
+  background-color: rgb(23, 23, 62);
   width: 100%;
   height: 10vh;
   display: flex;
@@ -29,5 +29,4 @@ import { useRouter} from "vue-router";
 
   }
 }
-
 </style>

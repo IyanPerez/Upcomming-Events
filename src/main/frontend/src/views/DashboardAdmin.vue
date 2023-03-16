@@ -42,7 +42,7 @@ const shotDetails=(id) =>{
 
         <section class="all-events">
             <div class="container-cards" v-for="event of eventuserstore.events" >
-            <CardsComponent
+            <CardsComponent class="card"
             :event="event"
             @add-event="addHighlighte(event.id)"
             @click="shotDetails(event.id)"/>
@@ -90,9 +90,8 @@ main{
 
 @media (min-width: 1024px) {
     main{
-        height: 100vh;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-around;
         .highlighted-events{
             width: 50%;
@@ -100,16 +99,15 @@ main{
         }
             .all-events{
               width: 50%;
-              height: 90vh;
               display: flex;
               flex-direction: row;
               flex-wrap: wrap;
               justify-content: space-around;
               align-items: center;
-              .container-cards{
-                  width: 45%;
-                  height: 45%;
-                }
+
+            }
+            .card{
+                width: 22vw;
             }
         }
     }

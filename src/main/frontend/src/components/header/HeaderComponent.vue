@@ -58,7 +58,7 @@ header{
 @media (min-width: 1024px){
  
     header{
-        height: 30vh;
+        height: 20vh;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -67,13 +67,13 @@ header{
     .nav-bar{
     display: flex;
     justify-content: end;
-    margin-inline: 3vw;
+    margin-right: 6vw;
     margin-top: 2vh;
     gap: 3vw;
     font-size: 3vh;
  }
  h1{
-    font-size: 6vw; 
+    font-size: 4vw; 
     width: 90%;
     text-align: center;
     margin-bottom: 3vh;
