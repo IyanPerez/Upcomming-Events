@@ -19,7 +19,6 @@ onBeforeMount(async() => {
 
 const addHighlighte =(id) =>{
     eventuserstore.addToHeighlightedEvents(id);
-
 }
 
 const shotDetails=(id) =>{

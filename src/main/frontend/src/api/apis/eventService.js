@@ -47,4 +47,24 @@ export default class eventService{
         const ediEvent = (await resp);
         return ediEvent;
     }
+
+    async incrementEvent(idEvent){
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.put(this.baseUrl + `/event/increment/${idEvent}`,{
+        });
+
+        const getBody = await response;
+
+        return getBody;
+    }
+
+    async deleteEvent(idEvent){
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.delete(this.baseUrl + `/events/delete/${idEvent}`,{
+        });
+
+        const getBody = await response;
+
+        return getBody;
+    }
 }

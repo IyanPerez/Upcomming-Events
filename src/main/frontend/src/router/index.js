@@ -20,17 +20,20 @@ const router = createRouter({
           path: "user",
           name: "user",
           component: () => import("../layouts/UserLayout.vue"),
+          meta: { requiresAuth: true },
           children: [
             {
               path: "dashboard",
               name: "dashboardUser",
-              component: () => import("../views/DashboardUser.vue")
+              component: () => import("../views/DashboardUser.vue"),
+              meta: { requiresAuth: true },
             },
             {
               path: "details/:id",
               name: "detailsUser",
               component: () => import("../views/UserDetails.vue"),
-              props:route => ({ id: parseInt(route.params.id) })
+              props:route => ({ id: parseInt(route.params.id) }),
+              meta: { requiresAuth: true },
             }
           ],
         },
@@ -38,17 +41,26 @@ const router = createRouter({
           path: "admin",
           name: "admin",
           component: () => import("../layouts/AdminLayout.vue"),
+          meta: { requiresAuth: true },
           children: [
             {
               path: "dashboard",
               name: "dashboardAdmin",
-              component: () => import("../views/DashboardAdmin.vue")
+              component: () => import("../views/DashboardAdmin.vue"),
+              meta: { requiresAuth: true },
             },
             {
               path: "details/:id",
               name: "detailsAdmin",
               component: () => import("../views/AdminDetailsView.vue"),
+              meta: { requiresAuth: true },
               props:route => ({ id: parseInt(route.params.id) })
+            },
+            {
+              path: 'create',
+              name: 'createEvent',
+              component: ()=> import('../views/CreateEventView.vue'),
+              meta: { requiresAuth: true },
             }
           ],
         }

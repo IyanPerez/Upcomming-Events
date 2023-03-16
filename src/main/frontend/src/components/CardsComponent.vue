@@ -1,22 +1,29 @@
 <script setup>
 import { defineProps } from "vue";
+import addButton from '../components/AddButton.vue';
+import { eventsStore } from "../stores/eventsStore";
+import { computed } from "vue";
 
-import addButton from '../components/AddButton.vue'
+const eventstore = eventsStore();
+
 const props = defineProps({
   event: {
     type: Object
   }
 })
 const emits = defineEmits(['addEvent'])
-
+console.log(props.event.actual_participants);
 const emitAddEvent = () => {
   emits('addEvent', props.event.id)
 }
-
+const disableCard = computed(()=>{
+  return (props.event.actual_participants == props.event.number_participants)? true : false;
+})
 
 </script>
 <template>
   <v-card 
+    :disabled="disableCard"
     class="card mx-auto "
   >
     <v-img

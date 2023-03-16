@@ -2,6 +2,7 @@
 import{ref, computed}from"vue";
 import { eventsStore } from "../stores/eventsStore.js";
 import { useLoginStore } from "../stores/loginStore";
+import { useRouter } from "vue-router";
 
 const title = ref("");
 const date = ref("");
@@ -9,6 +10,7 @@ const capacity = ref("");
 const description = ref(" ");
 const eventstore = eventsStore();
 const useloginstore = useLoginStore();
+const router = useRouter();
 
 const props = defineProps(
   {
@@ -42,6 +44,11 @@ function edit(){
   };
   eventstore.editEvents(events,props.id) 
 };
+
+const deleteEvent = async ()=>{
+  eventstore.deleteEvent(props.id)
+  router.push({name:'dashboardAdmin'})
+}
 
 const disable = computed(()=>{
   return (useloginstore.roleLogin=='ROLE_USER') ? true: false;
@@ -79,7 +86,7 @@ const disable = computed(()=>{
     <div class="card__buttons mt-4">
           <v-btn v-if="view == 'create' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="success" class="button mr-2" v-on:click="send()">SUBMIT</v-btn>
           <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="warning" class="button mr-2" v-on:click="edit()">EDIT</v-btn>
-          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="red" class="button mr-2" v-on:click="edit()">DELETE</v-btn>
+          <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="red" class="button mr-2" v-on:click="deleteEvent()">DELETE</v-btn>
           <v-btn v-if="view == 'edit' && useloginstore.roleLogin == 'ROLE_ADMIN'" variant="flat" color="blue" class="button mr-2" v-on:click="edit()">ADD TO SLIDER</v-btn>
     </div>
   </div>

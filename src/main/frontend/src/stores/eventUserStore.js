@@ -28,6 +28,17 @@ export const eventUserStore = defineStore("event", {
 
       console.log(eventsDB.status);
     },
+    async incrementEvent(idEvent){
+      const api = new Repository("events");
+
+      const eventService = api.chooseApi();
+
+      const eventsDB = await eventService.incrementEvent(idEvent);
+
+      console.log(eventsDB.status);
+
+      return eventsDB.data;
+    },
     addToHeighlightedEvents(id){
         if (this.existHeighlightedEvents(id)) {
 
