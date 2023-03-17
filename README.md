@@ -26,14 +26,15 @@ Requisitos Funcionales:
 ## Herramientas utilizadas:
 
 <div align="center">
-
-   
+  <img align="center" alt="HTML" title="HTML 5" height="50" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" title="CSS 3" height="50" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+   <img align="center" alt="Vue" title="Vue" height="50" width="80" src="https://positivethinking.tech/wp-content/uploads/2021/01/Logo-Vuejs.png">
   <img align="center" alt="Spring" title="Spring Boot" height="50" width="100" src="https://4.bp.blogspot.com/-ou-a_Aa1t7A/W6IhNc3Q0gI/AAAAAAAAD6Y/pwh44arKiuM_NBqB1H7Pz4-7QhUxAgZkACLcBGAs/s1600/spring-boot-logo.png">
- 
+  <img align="center" alt="figma" title="figma" height="50" width="80" src="https://www.protocol.com/media-library/figma-logo.png?id=29208385&width=1200&height=600&coordinates=0%2C60%2C0%2C60">
 
 </div>
 
 
 ## Participantes
-[<img src="https://avatars.githubusercontent.com/u/115170876?v=4" width=115><br><sub> Xavi Villaverde </sub>](https://github.com/Xavi1594)|[<img src="https://avatars.githubusercontent.com/u/116892294?v=4" width=115><br><sub>Caren Salles</sub>](https://github.com/CarenSalles) |
- | :---: | :---: |  
+[<img src="https://avatars.githubusercontent.com/u/116893351?v=4" width=115><br><sub>David Daza</sub>](https://avatars.githubusercontent.com/u/116893351?v=4)|[<img src="https://avatars.githubusercontent.com/u/115170876?v=4" width=115><br><sub> Xavi Villaverde </sub>](https://github.com/Xavi1594)|[<img src="https://avatars.githubusercontent.com/u/116892294?v=4" width=115><br><sub>Caren Salles</sub>](https://github.com/CarenSalles) |[<img src="https://avatars.githubusercontent.com/u/116182389?v=4" width=115><br><sub>Iyan Pérez</sub>](https://github.com/IyanPerez) | [<img src="https://avatars.githubusercontent.com/u/117730103?v=4" width=115><br><sub>Carol Vilchez</sub>](https://github.com/Carol21d)
+| :---: | :---: | :---: |  :---: |  :---: | 
