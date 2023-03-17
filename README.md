@@ -3,7 +3,7 @@ Un colectivo de desarrollo de software quiere crear una aplicación web para ges
 
 ​
 
-Requisitos Funcionales:
+## Requisitos Funcionales:
 
 - En portada la aplicación tendrá un slider con las masterclasses destacadas. Estas serán seleccionables por el administrador.
 - En portada habrá una lista paginada con todos los eventos ordenados del más cercano al más lejano en el tiempo.
@@ -14,6 +14,20 @@ Requisitos Funcionales:
 - El administrador podrá hacer un CRUD de los eventos.
 - Cuando un evento esté lleno (máximo número de participantes) nadie podrá registrarse.omming Events
  
+ ## Resultado final:
+ 
+ ![Captura](https://user-images.githubusercontent.com/116892294/225849125-4d7426fa-0f51-41f8-94b6-b72b20a3dee3.PNG)
+ 
+ ![Captura-dashboard-user](https://user-images.githubusercontent.com/116892294/225849233-89cbaf5d-29e1-47b3-8b91-0359279a7c48.PNG)
+ 
+ ![Captura-details-user](https://user-images.githubusercontent.com/116892294/225849430-b84574f1-ec40-4224-88ac-d9522c88ba52.PNG)
+ 
+ ![Captura-dashboard-admin](https://user-images.githubusercontent.com/116892294/225849516-a6c46a77-2b44-4c8b-bcff-0a8a134e377f.PNG)
+ 
+ ![Captura-details-admin](https://user-images.githubusercontent.com/116892294/225849579-c46bf999-6ba0-407c-bed5-c259778b8a78.PNG)
+ 
+ ![Captura-create-event-admin](https://user-images.githubusercontent.com/116892294/225849658-5ac28c58-a2ce-4c4b-94cd-49db8cfdaa30.PNG)
+
 ### Instalación:
  - cd src/main
  - npm install
